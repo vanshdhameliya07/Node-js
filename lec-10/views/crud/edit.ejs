@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div align="center">
+        <h1>edit page</h1>
+        <form action="/crud/updaterecord" method="post" enctype="multipart/form-data">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <td>id</td>
+                        <td><input type="text" name="editid" value="<%= record.id %>"></td>
+                    </tr>
+                    <tr>
+                        <td>name :</td>
+                        <td><input type="text" name="name" value="<%= record.name %>"></td>
+                    </tr>
+                    <tr>
+                        <td>email :</td>
+                        <td><input type="text" name="email" value="<%= record.email %>"></td>
+                    </tr>
+                    <tr>
+                        <td>password :</td>
+                        <td><input type="text" name="password" value="<%= record.password %>"></td>
+                    </tr>
+                    <tr>
+                        <td>gender :</td>
+                        <td>
+                            <input type="radio" name="gender" value="<%= record.gender %>">male
+                            <input type="radio" name="gender" value="<%= record.gender %>">female
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>hobby :</td>
+                        <td>
+                            <input type="checkbox" name="hobby" value="<%= record.hobby %>">cricket
+                            <input type="checkbox" name="hobby" value="<%= record.hobby %>">music
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>city :</td>
+                        <td>
+                            <select name="city">
+                                <option value="">----select----</option>
+                                <option name="surat">surat</option>
+                                <option name="vadodara">vadodara</option>
+                                <option name="vapi">vapi</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit"></td>
+                    </tr>
+
+                </thead>
+            </table>
+        </form>
+        <a href="../crud/view">view</a>
+    </div>
+</body>
+
+</html>

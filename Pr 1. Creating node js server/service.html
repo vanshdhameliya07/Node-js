@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        .header {
+            background-color: #007BFF;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .service-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: #007BFF;
+            margin-bottom: 15px;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .service-description {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #777;
+            padding: 10px 0;
+            background-color: #f4f4f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Our Services</h1>
+    </div>
+    <div class="container">
+        <div class="service-card">
+            <div class="service-icon">🛠️</div>
+            <h2 class="service-title">Web Development</h2>
+            <p class="service-description">
+                Build modern, responsive websites tailored to your needs using the latest technologies.
+            </p>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">📱</div>
+            <h2 class="service-title">Mobile App Development</h2>
+            <p class="service-description">
+                Create innovative mobile applications for Android and iOS platforms to enhance your business.
+            </p>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">☁️</div>
+            <h2 class="service-title">Cloud Solutions</h2>
+            <p class="service-description">
+                Migrate to the cloud with ease and improve scalability, security, and performance.
+            </p>
+        </div>
+        <div class="service-card">
+            <div class="service-icon">🔍</div>
+            <h2 class="service-title">SEO Optimization</h2>
+            <p class="service-description">
+                Boost your online presence and drive more traffic to your website with expert SEO strategies.
+            </p>
+        </div>
+    </div>
+    <div class="footer">
+        &copy; 2024 Your Company Name. All rights reserved.
+    </div>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        .header {
+            background-color: #282c34;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 3rem;
+        }
+
+        .header p {
+            margin-top: 10px;
+            font-size: 1.2rem;
+            color: #bbb;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .portfolio-card {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .portfolio-title {
+            font-size: 1.5rem;
+            color: #007BFF;
+            margin-bottom: 10px;
+        }
+
+        .portfolio-title:hover {
+            text-decoration: underline;
+        }
+
+        .portfolio-description {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .contact-section {
+            background-color: #007BFF;
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+
+        .contact-section p {
+            margin-top: 10px;
+            font-size: 1.2rem;
+        }
+
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #777;
+            padding: 10px 0;
+            background-color: #f4f4f9;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="header">
+        <h1>My Portfolio</h1>
+        <p>Showcasing my projects and achievements</p>
+    </div>
+    <div class="container">
+        <div class="portfolio-card">
+            <img src="https://via.placeholder.com/300x200" alt="Project 1" class="portfolio-image">
+            <h2 class="portfolio-title">Web Design</h2>
+            <p class="portfolio-description">
+                Designed a responsive and visually appealing website for a startup company.
+            </p>
+        </div>
+
+        <div class="portfolio-card">
+            <img src="https://via.placeholder.com/300x200" alt="Project 2" class="portfolio-image">
+            <h2 class="portfolio-title">Mobile App</h2>
+            <p class="portfolio-description">
+                Created a user-friendly mobile application for task management.
+            </p>
+        </div>
+
+        <div class="portfolio-card">
+            <img src="https://via.placeholder.com/300x200" alt="Project 3" class="portfolio-image">
+            <h2 class="portfolio-title">AI Project</h2>
+            <p class="portfolio-description">
+                Developed an AI-powered chatbot to enhance customer support experiences.
+            </p>
+        </div>
+    </div>
+    <div class="contact-section">
+        <h2>Contact Me</h2>
+        <p>Have a project in mind? Reach out to me at <strong>your.email@example.com</strong></p>
+    </div>
+    <div class="footer">
+        &copy; 2024 Your Name. All rights reserved.
+    </div>
+</body>
+
+</html>

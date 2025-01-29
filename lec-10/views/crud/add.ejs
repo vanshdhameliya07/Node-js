@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+</style>
+
+<body>
+    <div align="center">
+        <h1>add page</h1>
+        <form action="/crud/insertrecord" method="post" enctype="multipart/form-data">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <td>Name :</td>
+                        <td><input type="text" name="name" style="width: 98.1%;"></td>
+                    </tr>
+                    <tr>
+                        <td>Email :</td>
+                        <td><input type="text" name="email" style="width: 98.1%;"></td>
+                    </tr>
+                    <tr>
+                        <td>Password :</td>
+                        <td><input type="text" name="password" style="width: 98.1%;"></td>
+                    </tr>
+                    <tr>
+                        <td>Gender :</td>
+                        <td>
+                            <input type="radio" name="gender">Male
+                            <input type="radio" name="gender">Female
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Hobby :</td>
+                        <td>
+                            <input type="checkbox" name="hobby">Cricket
+                            <input type="checkbox" name="hobby">Music
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>City :</td>
+                        <td>
+                            <select name="city">
+                                <option value="">----select----</option>
+                                <option name="surat">surat</option>
+                                <option name="vadodara">vadodara</option>
+                                <option name="vapi">vapi</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>File :</td>
+                        <td><input type="file" name="image"></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit"></td>
+                    </tr>
+
+
+                </thead>
+            </table>
+        </form>
+        <a href="../crud/view">view</a>
+    </div>
+</body>
+
+</html>

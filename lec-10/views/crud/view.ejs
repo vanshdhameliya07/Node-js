@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div align="center">
+        <h1>view page</h1>
+        <form enctype="multipart/form-data">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <td>id</td>
+                        <td>name</td>
+                        <td>email</td>
+                        <td>password</td>
+                        <td>gender</td>
+                        <td>hobby</td>
+                        <td>city</td>
+                        <td>image</td>
+                        <td>delete</td>
+                        <td>edit</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% record.map((val,i)=>{
+                        %>
+                        <tr>
+                            <td>
+                                <%= val.id%>
+                            </td>
+                            <td>
+                                <%= val.name%>
+                            </td>
+                            <td>
+                                <%= val.email%>
+                            </td>
+                            <td>
+                                <%= val.password%>
+                            </td>
+                            <td>
+                                <%= val.gender%>
+                            </td>
+                            <td>
+                                <%= val.hobby%>
+                            </td>
+                            <td>
+                                <%= val.city%>
+                            </td>
+                            <td>
+                                <img src="/<%= val.image %>" width="150px" alt="User Image">
+                            </td>
+
+                            <td>
+                                <a href="/crud/deleteid?did=<%= val?.id %>">Delete</a>
+                            </td>
+                            <td>
+                                <a href="/crud/editid?eid=<%= val?.id %>">Edit</a>
+                            </td>
+                        </tr>
+                        <% }) %>
+                </tbody>
+            </table>
+        </form>
+        <a href="../crud/add">add</a>
+    </div>
+</body>
+
+</html>
