@@ -7,6 +7,4 @@ routes.get('/', (req, res) => {
 })
 
 routes.use('/crud', require('./crudRoute'));
-
-
 module.exports = routes;

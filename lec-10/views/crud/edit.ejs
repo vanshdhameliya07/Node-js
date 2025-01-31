@@ -9,8 +9,8 @@
 
 <body>
     <div align="center">
-        <h1>edit page</h1>
-        <form action="/crud/updaterecord" method="post" enctype="multipart/form-data">
+        <h1>add page</h1>
+        <form action="/crud/updaterecord" method="post">
             <table border="1">
                 <thead>
                     <tr>
@@ -43,15 +43,14 @@
                             <input type="checkbox" name="hobby" value="<%= record.hobby %>">music
                         </td>
                     </tr>
-
                     <tr>
                         <td>city :</td>
                         <td>
                             <select name="city">
                                 <option value="">----select----</option>
-                                <option name="surat">surat</option>
-                                <option name="vadodara">vadodara</option>
-                                <option name="vapi">vapi</option>
+                                <option name="surat" value="<%= record.city %>">surat</option>
+                                <option name="vadodara" value="<%= record.city %>">vadodara</option>
+                                <option name="vapi" value="<%= record.city %>">vapi</option>
                             </select>
                         </td>
                     </tr>

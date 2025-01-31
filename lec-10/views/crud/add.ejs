@@ -6,44 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-<style>
-
-</style>
 
 <body>
     <div align="center">
         <h1>add page</h1>
-        <form action="/crud/insertrecord" method="post" enctype="multipart/form-data">
+        <form action="/crud/insertrecord" method="post">
             <table border="1">
                 <thead>
                     <tr>
-                        <td>Name :</td>
-                        <td><input type="text" name="name" style="width: 98.1%;"></td>
+                        <td>name :</td>
+                        <td><input type="text" name="name"></td>
                     </tr>
                     <tr>
-                        <td>Email :</td>
-                        <td><input type="text" name="email" style="width: 98.1%;"></td>
+                        <td>email :</td>
+                        <td><input type="text" name="email"></td>
                     </tr>
                     <tr>
-                        <td>Password :</td>
-                        <td><input type="text" name="password" style="width: 98.1%;"></td>
+                        <td>password :</td>
+                        <td><input type="text" name="password"></td>
                     </tr>
                     <tr>
-                        <td>Gender :</td>
+                        <td>gender :</td>
                         <td>
-                            <input type="radio" name="gender">Male
-                            <input type="radio" name="gender">Female
+                            <input type="radio" name="gender" value="male">male
+                            <input type="radio" name="gender" value="female">female
                         </td>
                     </tr>
                     <tr>
-                        <td>Hobby :</td>
+                        <td>hobby :</td>
                         <td>
-                            <input type="checkbox" name="hobby">Cricket
-                            <input type="checkbox" name="hobby">Music
+                            <input type="checkbox" name="hobby" value="cricket">cricket
+                            <input type="checkbox" name="hobby" value="music">music
                         </td>
                     </tr>
                     <tr>
-                        <td>City :</td>
+                        <td>city :</td>
                         <td>
                             <select name="city">
                                 <option value="">----select----</option>
@@ -54,14 +51,9 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>File :</td>
-                        <td><input type="file" name="image"></td>
-                    </tr>
-                    <tr>
                         <td></td>
                         <td><input type="submit"></td>
                     </tr>
-
 
                 </thead>
             </table>

@@ -10,7 +10,7 @@
 <body>
     <div align="center">
         <h1>view page</h1>
-        <form enctype="multipart/form-data">
+        <form action="">
             <table border="1">
                 <thead>
                     <tr>
@@ -21,7 +21,6 @@
                         <td>gender</td>
                         <td>hobby</td>
                         <td>city</td>
-                        <td>image</td>
                         <td>delete</td>
                         <td>edit</td>
                     </tr>
@@ -52,14 +51,10 @@
                                 <%= val.city%>
                             </td>
                             <td>
-                                <img src="/<%= val.image %>" width="150px" alt="User Image">
-                            </td>
-
-                            <td>
-                                <a href="/crud/deleteid?did=<%= val?.id %>">Delete</a>
+                                <a href="/crud/deleteid?did=<%= val.id %>">Delete</a>
                             </td>
                             <td>
-                                <a href="/crud/editid?eid=<%= val?.id %>">Edit</a>
+                                <a href="/crud/editid?eid=<%= val.id %>">edit</a>
                             </td>
                         </tr>
                         <% }) %>
