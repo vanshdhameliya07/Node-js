@@ -38,10 +38,11 @@ const editId = async (req, res) => {
 const deleteId = async (req, res) => {
 
     let id = req.query.did;
-    await UserModel.findByIdAndDelete(id)
-    
+
     try {
-       
+        const rr = await UserModel.findById(id);
+        fs.unlinkSync(rr.image)
+        await UserModel.findByIdAndDelete(id)
         console.log("record delete");
         return res.redirect('/crud/view');
     } catch (err) {

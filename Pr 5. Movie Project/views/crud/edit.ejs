@@ -65,6 +65,7 @@
         color: black;
     }
 </style>
+
 <body>
     <div align="center" class="form-container">
         <h1>add page</h1>
@@ -73,22 +74,26 @@
                 <thead>
                     <tr>
                         <td>id</td>
-                        <td><input type="text" name="editid" value="<%= record.id %>"></td>
+                        <td><input type="text" name="editid" style="width: 95%;" value="<%= record.id %>"></td>
                     </tr>
                     <tr>
                         <td>name :</td>
-                        <td><input type="text" name="name" value="<%= record.name %>"></td>
+                        <td><input type="text" name="name" style="width: 95%;" value="<%= record.name %>"></td>
                     </tr>
                     <tr>
                         <td>description :</td>
-                        <td><input type="text" name="description" value="<%= record.description %>"></td>
+                        <td><input type="text" name="description" style="width: 95%;" value="<%= record.description %>">
+                        </td>
                     </tr>
                     <tr>
                         <td>price :</td>
-                        <td><input type="text" name="price" value="<%= record.price %>"></td>
+                        <td><input type="text" name="price" style="width: 95%;" value="<%= record.price %>"></td>
                     </tr>
-                    
-                    
+                    <tr>
+                        <td>image</td>
+                        <td><input type="file" name="image" style="width: 95%;" value="<%=record.image %>"></td>
+                    </tr>
+
                     <tr>
                         <td></td>
                         <td><input type="submit"></td>
