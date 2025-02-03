@@ -69,7 +69,7 @@
 <body>
     <div align="center" class="form-container">
         <h1>add page</h1>
-        <form action="/crud/updaterecord" method="post">
+        <form action="/crud/updaterecord" method="post" enctype="multipart/form-data">
             <table border="1">
                 <thead>
                     <tr>
@@ -91,7 +91,10 @@
                     </tr>
                     <tr>
                         <td>image</td>
-                        <td><input type="file" name="image" style="width: 95%;" value="<%=record.image %>"></td>
+                        <td><input type="file" name="image">
+                            <img src="/<%= record.image %>" width="100px" height="60px" >
+
+                        </td>
                     </tr>
 
                     <tr>

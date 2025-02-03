@@ -16,7 +16,7 @@ routes.get('/deleteid', deleteId);
 
 routes.get('/editid', editId);
 
-routes.post('/updaterecord', updateRecord)
+
 
 const st = multer.diskStorage({
     destination: (req, res, cb) => {
@@ -31,4 +31,5 @@ const imageupload = multer({ storage: st }).single('image')
 
 routes.post('/insertrecord', imageupload, insertRecord)
 
+routes.post('/updaterecord', imageupload, updateRecord)
 module.exports = routes;

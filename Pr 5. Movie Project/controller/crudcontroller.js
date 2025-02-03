@@ -38,7 +38,6 @@ const editId = async (req, res) => {
 const deleteId = async (req, res) => {
 
     let id = req.query.did;
-
     try {
         const rr = await UserModel.findById(id);
         fs.unlinkSync(rr.image)
@@ -52,19 +51,39 @@ const deleteId = async (req, res) => {
 
 }
 const updateRecord = async (req, res) => {
-    const { editid, name, description, price } = req.body
-    try {
-        await UserModel.findByIdAndUpdate(editid, {
-            name: name,
-            description: description,
-            price: price,
+    const { editid, name, description, price } = req.body;
 
-        });
-        console.log('user update');
-        return res.redirect('/crud/view');
-    }
-    catch (err) {
-        console.log(err);
+    try {
+        let ff = await UserModel.findById(editid);
+        if (req.file) {
+            try {
+                fs.unlinkSync(ff?.image);
+            }
+            catch (err) {
+                console.log(err);
+                return false;
+            }
+            await UserModel.findByIdAndUpdate(editid, {
+                name: name,
+                description: description,
+                price: price,
+                image: req?.file?.path,
+            })
+            return res.redirect('/crud/view');
+
+        }
+        else {
+            await UserModel.findByIdAndUpdate(editid, {
+                name: name,
+                description: description,
+                price: price,
+                image: ff?.image,
+            })
+            console.log('User updated successfully');
+            return res.redirect('/crud/view');
+        }
+    } catch (err) {
+        console.error(err);
         return false;
     }
 }
@@ -90,5 +109,5 @@ const insertRecord = async (req, res) => {
 }
 
 module.exports = {
-    addpage, viewpage, editpage, insertRecord, deleteId, editId, updateRecord
+    addpage, viewpage, editpage, insertRecord, deleteId, editId, updateRecord,
 }
