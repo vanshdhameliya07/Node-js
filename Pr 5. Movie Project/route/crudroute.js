@@ -1,11 +1,34 @@
-const express = require(`express`);
+const express = require('express');
 
-const route = express.Router();
+const multer = require('multer')
 
-const { addpage, viewpage } = require('../controller/crudcontroller')
+const routes = express.Router();
 
-route.get('/', addpage);
+const { addpage, viewpage, editpage, insertRecord, deleteId, editId, updateRecord } = require('../controller/crudcontroller');
 
-route.get('/view', viewpage);
+routes.get('/add', addpage);
 
-module.exports = route;
+routes.get('/view', viewpage);
+
+routes.get('/edit', editpage);
+
+routes.get('/deleteid', deleteId);
+
+routes.get('/editid', editId);
+
+routes.post('/updaterecord', updateRecord)
+
+const st = multer.diskStorage({
+    destination: (req, res, cb) => {
+        cb(null, 'upload')
+    },
+    filename: (req, file, cb) => {
+        const uniq = Math.floor(Math.random() * 1000);
+        cb(null, `${file.fieldname}-${uniq}`)
+    }
+})
+const imageupload = multer({ storage: st }).single('image')
+
+routes.post('/insertrecord', imageupload, insertRecord)
+
+module.exports = routes;

@@ -65,30 +65,30 @@
         color: black;
     }
 </style>
-
 <body>
     <div align="center" class="form-container">
         <h1>add page</h1>
-        <form action="/crud/insertrecord" method="post" enctype="multipart/form-data">
+        <form action="/crud/updaterecord" method="post">
             <table border="1">
                 <thead>
                     <tr>
+                        <td>id</td>
+                        <td><input type="text" name="editid" value="<%= record.id %>"></td>
+                    </tr>
+                    <tr>
                         <td>name :</td>
-                        <td><input type="text" name="name" style="width:98%;"></td>
+                        <td><input type="text" name="name" value="<%= record.name %>"></td>
                     </tr>
                     <tr>
                         <td>description :</td>
-                        <td><input type="text" name="description" style="width:98%;"></td>
+                        <td><input type="text" name="description" value="<%= record.description %>"></td>
                     </tr>
                     <tr>
                         <td>price :</td>
-                        <td><input type="text" name="price" style="width:98%;"></td>
+                        <td><input type="text" name="price" value="<%= record.price %>"></td>
                     </tr>
-                    <tr>
-                        <td>movie image</td>
-                        <td><input type="file" name="image"></td>
-                    </tr>
-
+                    
+                    
                     <tr>
                         <td></td>
                         <td><input type="submit"></td>
