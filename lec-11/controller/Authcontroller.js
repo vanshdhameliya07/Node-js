@@ -2,8 +2,10 @@ const { checkUser } = require('../middleware/checkuser');
 const Usermodel = require('../models/UserModel');
 
 const loginpage = (req, res) => {
-
-    return res.render(`login`);
+    if (!req.cookies.auth) {
+        return res.render(`login`);
+    }
+   
 }
 const aboutpage = (req, res) => {
     return res.render('about')
@@ -26,7 +28,6 @@ const loginUser = async (req, res) => {
         const { email, password } = req.body;
 
         let user = await Usermodel.findOne({ email: email });
-
         if (!user || user.password != password) {
 
             console.log(`email and password not valid`);
@@ -61,6 +62,7 @@ const registerUser = async (req, res) => {
 
 const logoutUser = (req, res) => {
     res.clearCookie(`auth`);
+    console.log(`log out user`)
     return res.redirect(`/login`)
 }
 

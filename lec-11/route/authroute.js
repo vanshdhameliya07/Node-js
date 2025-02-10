@@ -7,7 +7,7 @@ const { loginpage, dashboardpage, registerpage, registerUser, loginUser, logoutU
 
 route.get(`/login`, loginpage);
 route.get(`/about`, checkUser, aboutpage);
-route.get(`/product`,checkUser, productpage);
+route.get(`/product`, checkUser, productpage);
 route.get('/dashboard', dashboardpage);
 route.get('/register', registerpage);
 route.get(`/logoutuser`, logoutUser)

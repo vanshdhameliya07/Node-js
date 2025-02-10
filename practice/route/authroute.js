@@ -2,10 +2,8 @@ const express = require(`express`);
 
 const route = express.Router();
 
-const { loginpage, loginUser } = require(`../controller/Authcontroller`)
+const { loginpage } = require(`../controller/Authcontroller`);
 
-route.use(`/`, loginpage);
+route.get(`/`, loginpage)
 
-route.use(`/loginuser`, loginUser)
-
-module.exports = route;
+module.exports = route

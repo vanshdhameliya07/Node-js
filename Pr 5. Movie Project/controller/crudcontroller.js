@@ -41,6 +41,7 @@ const deleteId = async (req, res) => {
     try {
         const rr = await UserModel.findById(id);
         fs.unlinkSync(rr.image)
+
         await UserModel.findByIdAndDelete(id)
         console.log("record delete");
         return res.redirect('/crud/view');
