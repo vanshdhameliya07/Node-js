@@ -2,39 +2,39 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 
 <body>
-    <div align="center">
-        <h1>add user</h1>
+  <div align="center">
+    <h1>add user</h1>
 
-        <form action="/blog/insertuser" method="post" enctype="multipart/form-data">
-            <table border="1">
-                <thead>
-                    <tr>
-                        <td>title</td>
-                        <td><input type="text" name="title" style="width: 95%;"></td>
-                    </tr>
-                    <tr>
-                        <td>description </td>
-                        <td><input type="text" name="description" style="width: 95%;"></td>
-                    </tr>
-                    <tr>
-                        <td>file </td>
-                        <td><input type="file" name="image"></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><input type="submit"></td>
-                    </tr>
-                </thead>
-            </table>
-        </form>
-<a href="/blog/viewblog">blog</a>
-    </div>
+    <form action="/blog/insertuser" method="post" enctype="multipart/form-data">
+      <table border="1" cellpadding="6">
+        <thead>
+          <tr>
+            <td>title</td>
+            <td><input type="text" name="title" style="width: 95%;"></td>
+          </tr>
+          <tr>
+            <td>description </td>
+            <td><input type="text" name="description" style="width: 95%;"></td>
+          </tr>
+          <tr>
+            <td>file </td>
+            <td><input type="file" name="image"></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><input type="submit"></td>
+          </tr>
+        </thead>
+      </table>
+    </form>
+    <a href="/blog/viewblog">blog</a>
+  </div>
 </body>
 
 </html>

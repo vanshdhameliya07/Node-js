@@ -8,6 +8,7 @@ const { addblogpage, viewblogpage, insertRecord, deleteId, editId, editblogpage,
 route.get(`/addblog`, addblogpage);
 route.get(`/viewblog`, viewblogpage);
 route.get(`/deleteid`, deleteId);
+route.get(`/editblog`, editblogpage);
 route.get(`/editid`, editId);
 
 
@@ -24,6 +25,6 @@ const st = multer.diskStorage({
 const imageupload = multer({ storage: st }).single(`image`);
 
 route.post(`/insertuser`, imageupload, insertRecord);
-route.post(`/updaterecord`,UpdateRecord)
+route.post(`/updaterecord`, imageupload, UpdateRecord);
 
-module.exports = route
+module.exports = route;

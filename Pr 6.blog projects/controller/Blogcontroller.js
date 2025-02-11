@@ -1,4 +1,3 @@
-const blog = require("../models/BlogModel");
 const BlogModel = require(`../models/BlogModel`);
 const fs = require(`fs`);
 
@@ -37,10 +36,11 @@ const deleteId = async (req, res) => {
 }
 
 const editId = async (req, res) => {
+
     let id = req.query.eid;
     try {
         const record = await BlogModel.findById(id);
-        console.log(`edit user`)
+        console.log(`edit user`);
         return res.render(`blog/editblog`, {
             single: record
         })
@@ -57,12 +57,12 @@ const UpdateRecord = async (req, res) => {
     console.log(req.body)
 
     try {
+
         let ff = await BlogModel.findById(editid);
 
         if (req.file) {
             try {
                 fs.unlinkSync(ff?.image);
-
             } catch (err) {
                 console.log(err);
                 return false;
@@ -110,5 +110,5 @@ const insertRecord = async (req, res) => {
 }
 
 module.exports = {
-    addblogpage, viewblogpage, insertRecord, deleteId, editId, UpdateRecord
+    addblogpage, viewblogpage, insertRecord, deleteId, editId, UpdateRecord, editblogpage
 }
