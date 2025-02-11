@@ -4,46 +4,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Edit Blog</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f8f9fa;
+          
+        }
+
+        .container {
+            background-color: white;
+
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 450px;
+          
+        }
+
+        h1 {
+            text-align: center;
+            color: #343a40;
+            margin-bottom: 25px;
+        }
+
+        label {
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .form-control {
+            border: 1px solid #ced4da;
+        }
+
+        .form-control:focus {
+
+            border-color: #80bdff;
+            
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+            
+        }
+
+        textarea.form-control {
+            height: 120px;
+        }
+
+        .img-thumbnail {
+            max-width: 100px;
+            height: auto;
+            margin-top: 10px;
+            border: 1px solid #ddd;
+            padding: 5px;
+            background-color: #f8f9fa;
+        
+        }
+
+        .btn-primary {
+            
+            background-color: #007bff;
+            border-color: #007bff;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #0069d9;
+            border-color: #0062cc;
+        }
+    </style>
 </head>
 
 <body>
-    <div align="center">
-        <h1>edit page</h1>
-
+    <div class="container">
+        <h1>Edit Blog</h1>
         <form action="/blog/updaterecord" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="editid" value="<%=single?.id%>">
 
-            <table border="1" cellpadding="5">
-                <thead>
-                    <tr>
-                        <td>id</td>
-                        <td><input type="text" name="editid" value="<%=single?.id%>" style="width: 95%;"></td>
-                    </tr>
-                    <tr>
-                        <td>title</td>
-                        <td><input type="text" name="title" value="<%=single?.title%>" style="width: 95%;"></td>
-                    </tr>
-                    <tr>
-                        <td>description </td>
-                        <td><input type="text" name="description" value="<%=single?.description %>" style="width: 95%;">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>file</td>
-                        <td><input type="file" name="image">
-                            <img src="/<%=single.image%>" alt="" width="100px">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><input type="submit"></td>
-                    </tr>
-                </thead>
-            </table>
+            <div class="mb-3">
+                <label for="title" class="form-label">Title:</label>
+                <input type="text" class="form-control" id="title" name="title" value="<%=single?.title%>" required>
+            </div>
 
+            <div class="mb-3">
+                <label for="description" class="form-label">Description:</label>
+                <textarea class="form-control" id="description" name="description"
+                    required><%=single?.description%></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="image" class="form-label">Image:</label>
+                <input class="form-control" type="file" id="image" name="image">
+                <% if (single?.image) %>
+            </div>
+
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
         </form>
-
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
