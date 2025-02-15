@@ -7,8 +7,8 @@ const loginpage = (req, res) => {
 
     return res.render(`login`);
 }
-const dashboardpage = (req, res) => {
-    return res.render(`dashboard`);
+const viewblogpage = (req, res) => {
+    return res.render(`viewblog`);
 }
 
 const aboutpage = (req, res) => {
@@ -36,7 +36,7 @@ const loginUser = (req, res) => {
     try {
         console.log("done");
 
-        return res.redirect(`/dashboard`);
+        return res.redirect(`/viewblog`);
 
     } catch (error) {
         console.log(err);
@@ -45,5 +45,5 @@ const loginUser = (req, res) => {
 }
 
 module.exports = {
-    registerpage, loginpage, registerUser, loginUser, aboutpage, dashboardpage
+    registerpage, loginpage, registerUser, loginUser, aboutpage, viewblogpage
 }

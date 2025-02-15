@@ -7,7 +7,6 @@ const { CheckUser } = require("../middleware/CheckUser");
 
 route.get(`/`, loginpage);
 route.get(`/register`, registerpage);
-route.get(`/dashboard`, CheckUser, dashboardpage);
 route.get(`/logout`, logOut)
 
 

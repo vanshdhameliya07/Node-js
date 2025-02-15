@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <div align="center">
+        <h1>edit page</h1>
+
+        <form action="/updaterecord" method="post" enctype="multipart/form-data">
+            <table border="1" cellpadding="5">
+                <thead>
+                    <tr>
+                        <td>id</td>
+                        <td><input type="text" name="editid" value="<%=single?.id%>" style="width: 95%;"></td>
+                    </tr>
+                    <tr>
+                        <td>title</td>
+                        <td><input type="text" name="title" value="<%=single?.title%>" style="width: 95%;"></td>
+                    </tr>
+                    <tr>
+                        <td>description </td>
+                        <td><input type="text" name="description" value="<%=single?.description%>" style="width: 95%;">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>file</td>
+                        <td><input type="file" name="image">
+                            <img src="<%=single?.image %>" width="100px" height="60px">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit"></td>
+                    </tr>
+                </thead>
+            </table>
+        </form>
+        <a href="/logoutuser">logout</a>
+        <a href="/view">view</a>
+    </div>
+</body>
+
+</html>

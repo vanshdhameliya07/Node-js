@@ -9,28 +9,32 @@
 
 <body>
     <div align="center">
-        <h1>login page</h1>
-
-
-        <form action="/loginuser" method="post">
-            <table border="1" cellpadding="6">
+        <h1>add blog</h1>
+        <form action="/bloguser" method="post">
+            <table border="1"  cellpadding="6">
                 <thead>
+
                     <tr>
-                        <td>email</td>
-                        <td><input type="text" name="email"></td>
+                        <td>title</td>
+                        <td><input type="text" name="title" style="width: 95%;"></td>
                     </tr>
                     <tr>
-                        <td>password</td>
-                        <td><input type="text" name="password"></td>
+                        <td>description</td>
+                        <td><input type="text" name="description" style="width: 95%;" ></td>
+                    </tr>
+                    <tr>
+
+                        <td>image</td>
+                        <td><input type="file" name="image"></td>
                     </tr>
                     <tr>
                         <td></td>
                         <td><input type="submit"></td>
                     </tr>
+
                 </thead>
             </table>
         </form>
-        <a href="/register">register</a>
     </div>
 </body>
 

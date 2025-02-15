@@ -6,9 +6,7 @@ const loginpage = (req, res) => {
 const registerpage = (req, res) => {
     return res.render(`register`);
 }
-const dashboardpage = (req, res) => {
-    return res.render(`dashboard`);
-}
+
 
 const registerUser = async (req, res) => {
     try {
@@ -37,7 +35,7 @@ const loginUser = async (req, res) => {
         }
         console.log(`email and password true`);
         res.cookie(`auth`, user)
-        return res.redirect(`/dashboard`)
+        return res.redirect(`blog/viewblog`)
 
     } catch (err) {
         console.log(err);
@@ -52,5 +50,5 @@ const logOut = (req, res) => {
 }
 
 module.exports = {
-    loginpage, registerpage, dashboardpage, registerUser, loginUser, logOut
+    loginpage, registerpage, registerUser, loginUser, logOut
 }
