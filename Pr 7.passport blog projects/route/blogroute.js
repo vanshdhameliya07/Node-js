@@ -4,7 +4,7 @@ const multer = require('multer');
 
 const route = express.Router();
 
-const { addblog, blogUser, deleteUser, editblog, editUser } = require('../controller/Blogcontroller')
+const { addblog, blogUser, deleteUser, editblog, editUser, UpdateUser } = require('../controller/Blogcontroller')
 
 route.get('/addblog', addblog);
 route.get('/deleteuser', deleteUser);
@@ -23,6 +23,7 @@ const st = multer.diskStorage({
 
 const imageupload = multer({ storage: st }).single('image')
 
-route.post(`/bloguser`, imageupload, blogUser)
+route.post(`/bloguser`, imageupload, blogUser);
+route.post('/updateuser',imageupload,UpdateUser);
 
 module.exports = route
