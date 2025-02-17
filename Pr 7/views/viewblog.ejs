@@ -17,9 +17,35 @@
                     <td>title</td>
                     <td>description</td>
                     <td>image</td>
+                    <td>delete</td>
+                    <td>edit</td>
                 </tr>
             </thead>
+            <tbody>
+                <% record.map((val,i)=>{
+                    %>
+                    <tr>
+                        <td>
+                            <%=val.title%>
+                        </td>
+                        <td>
+                            <%=val.description%>
+                        </td>
+                        <td>
+                            <img src="/<%=val.image%>" width="95" alt="">
+                        </td>
+                        <td>
+                            <a href="/blog/deleteuser?did=<%=val.id%>">delete</a>
+                        </td>
+                        <td>
+                            <a href="/blog/edituser?eid=<%=val.id%>">edit</a>
+                        </td>
+                    </tr>
+                    <% }) %>
+            </tbody>
         </table>
+        <a href="/blog/editblog">edit</a>
+        <a href="/blog/addblog">add</a>
     </div>
 
 </body>

@@ -1,4 +1,5 @@
 const UserModel = require(`../models/UserModel`)
+const BlogModel = require('../models/BlogModel');
 
 const registerpage = (req, res) => {
     return res.render(`register`);
@@ -7,8 +8,11 @@ const loginpage = (req, res) => {
 
     return res.render(`login`);
 }
-const viewblogpage = (req, res) => {
-    return res.render(`viewblog`);
+const viewblogpage = async (req, res) => {
+    const allrecord = await BlogModel.find({});
+    return res.render('viewblog',{
+        record:allrecord
+    })
 }
 
 const aboutpage = (req, res) => {
