@@ -1,53 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>View Blog Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 800px;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ccc;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        img {
+            width: 80px;
+            border-radius: 5px;
+        }
+        a {
+            display: inline-block;
+            margin: 5px;
+            padding: 10px;
+            text-decoration: none;
+            background: #007bff;
+            color: white;
+            border-radius: 5px;
+        }
+        a:hover {
+            background: #0056b3;
+        }
+    </style>
 </head>
-
 <body>
-
-    <div align="center">
-        <h1> view blog page</h1>
-        <table border="1">
+    <div class="container">
+        <h1>View Blog Page</h1>
+        <table>
             <thead>
                 <tr>
-                    <td>title</td>
-                    <td>description</td>
-                    <td>image</td>
-                    <td>delete</td>
-                    <td>edit</td>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Image</th>
+                    <th>Delete</th>
+                    <th>Edit</th>
                 </tr>
             </thead>
             <tbody>
-                <% record.map((val,i)=>{
-                    %>
-                    <tr>
-                        <td>
-                            <%=val.title%>
-                        </td>
-                        <td>
-                            <%=val.description%>
-                        </td>
-                        <td>
-                            <img src="/<%=val.image%>" width="95" alt="">
-                        </td>
-                        <td>
-                            <a href="/blog/deleteuser?did=<%=val.id%>">delete</a>
-                        </td>
-                        <td>
-                            <a href="/blog/edituser?eid=<%=val.id%>">edit</a>
-                        </td>
-                    </tr>
-                    <% }) %>
+                <% record.map((val,i) => { %>
+                <tr>
+                    <td><%= val.title %></td>
+                    <td><%= val.description %></td>
+                    <td><img src="/<%= val.image %>" alt="Blog Image"></td>
+                    <td><a href="/blog/deleteuser?did=<%= val.id %>" style="background: red;">Delete</a></td>
+                    <td><a href="/blog/edituser?eid=<%= val.id %>">Edit</a></td>
+                </tr>
+                <% }) %>
             </tbody>
         </table>
-        <a href="/blog/editblog">edit</a>
-        <a href="/blog/addblog">add</a>
+        <a href="/blog/addblog" style="background: green;">Add Blog</a>
     </div>
-
 </body>
-
 </html>

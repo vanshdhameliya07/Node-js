@@ -1,46 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Edit Blog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 350px;
+        }
+        h1 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+        input[type="text"], input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            background: #007bff;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+        }
+        input[type="submit"]:hover {
+            background: #0056b3;
+        }
+        a {
+            display: block;
+            margin-top: 10px;
+            text-decoration: none;
+            color: #007bff;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
-
 <body>
-    <div align="center">
-        <h1>edit blog</h1>
+    <div class="container">
+        <h1>Edit Blog</h1>
         <form action="/blog/updateuser" method="post" enctype="multipart/form-data">
-            <table border="1" cellpadding="6">
-                <thead>
-                    <tr>
-                        <td>id</td>
-                        <td><input type="text" name="editid" value="<%=single.id%>" style="width: 95%;"></td>
-                    </tr>
-                    <tr>
-                        <td>title</td>
-                        <td><input type="text" name="title" value="<%=single.title%>" style="width: 95%;"></td>
-                    </tr>
-                    <tr>
-                        <td>description</td>
-                        <td><input type="text" name="description" value="<%=single.description%>" style="width: 95%;">
-                        </td>
-                    </tr>
-                    <tr>
-
-                        <td>image</td>
-                        <td><input type="file" name="image" value="<%=single.image%>"></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><input type="submit"></td>
-                    </tr>
-
-                </thead>
-            </table>
+            <input type="text" name="editid" value="<%=single.id%>" hidden>
+            <input type="text" name="title" value="<%=single.title%>" placeholder="Enter blog title" required>
+            <input type="text" name="description" value="<%=single.description%>" placeholder="Enter blog description" required>
+            <input type="file" name="image">
+            <input type="submit" value="Update Blog">
         </form>
-        <a href="/viewblog">view</a>
+        <a href="/viewblog">View Blogs</a>
     </div>
 </body>
-
 </html>

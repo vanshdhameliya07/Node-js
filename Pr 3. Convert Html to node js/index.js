@@ -11,7 +11,6 @@ const path = require('path')
 app.use(express.static(path.join(__dirname, "public")));
 
 
-
 app.get('/dashboard', (req, res) => {
     return res.render('dashboard');
 })
