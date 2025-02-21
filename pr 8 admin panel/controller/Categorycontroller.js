@@ -4,6 +4,7 @@ const CategoryModel = require('../models/CategoryModel');
 const addcategorypage = (req, res) => {
     return res.render('category/addcategory');
 }
+
 const viewcategorypage = async (req, res) => {
 
     try {
@@ -27,10 +28,49 @@ const deleteUser = async (req, res) => {
 }
 
 const editUser = async (req, res) => {
-    const single = await CategoryModel.find({});
-    console.log(single)
+    let id = req.query.eid;
+    try {
+
+        let single = await CategoryModel.findById(id);
+        return res.render('category/editcategory', {
+            single: single
+        })
+
+    } catch (err) {
+        console.log(err);
+        return false;
+    }
 }
 
+const Updatecategory = async (req, res) => {
+    const { editid, category } = req.body;
+    try {
+        await CategoryModel.findByIdAndUpdate(editid, {
+            category: category
+        })
+        return res.redirect('/category/viewcategory')
+    } catch (err) {
+        console.log(err);
+        return false;
+    }
+}
+const Changestatus = async (req, res) => {
+    let id = req.query.id;
+    let status = req.query.status;
+    if (status == "deactive") {
+        await CategoryModel.findByIdAndUpdate(id, {
+            status: "deactive"
+        })
+    }
+
+    else {
+        await CategoryModel.findByIdAndUpdate(id, {
+            status: "active"
+        })
+    }
+    req.flash('success', 'Category Successfully Changed')
+    return res.redirect('/category/viewcategory');
+}
 const insertCategory = async (req, res) => {
     try {
         const { category } = req.body;
@@ -46,5 +86,5 @@ const insertCategory = async (req, res) => {
 }
 
 module.exports = {
-    addcategorypage, viewcategorypage, insertCategory, deleteUser, editUser
+    addcategorypage, viewcategorypage, insertCategory, deleteUser, editUser, Updatecategory, Changestatus
 }
