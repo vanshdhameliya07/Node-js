@@ -6,6 +6,4 @@ route.use(`/`, require(`../route/authroute`));
 
 route.use('/blog', require('../route/blogroute'));
 
-
-
 module.exports = route;

@@ -6,52 +6,84 @@
     <title>Edit Blog</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
+            padding: 20px;
         }
+
         .container {
             background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
             text-align: center;
-            width: 350px;
+            width: 400px;
         }
+
         h1 {
             margin-bottom: 20px;
             color: #333;
+            font-size: 24px;
         }
+
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        label {
+            font-size: 14px;
+            color: #555;
+            font-weight: 600;
+        }
+
         input[type="text"], input[type="file"] {
             width: 100%;
-            padding: 10px;
-            margin: 8px 0;
+            padding: 12px;
+            margin-top: 5px;
             border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: 6px;
+            font-size: 14px;
+            outline: none;
+            transition: border-color 0.3s;
         }
-        input[type="submit"] {
+
+        input[type="text"]:focus {
+            border-color: #6e8efb;
+        }
+
+        .btn {
             background: #007bff;
             color: white;
-            padding: 10px;
+            padding: 12px;
             border: none;
-            border-radius: 5px;
+            border-radius: 6px;
             cursor: pointer;
             width: 100%;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s ease;
         }
-        input[type="submit"]:hover {
+
+        .btn:hover {
             background: #0056b3;
         }
-        a {
+
+        .link {
             display: block;
-            margin-top: 10px;
+            margin-top: 12px;
             text-decoration: none;
             color: #007bff;
+            font-size: 14px;
+            font-weight: bold;
         }
-        a:hover {
+
+        .link:hover {
             text-decoration: underline;
         }
     </style>
@@ -61,12 +93,25 @@
         <h1>Edit Blog</h1>
         <form action="/blog/updateuser" method="post" enctype="multipart/form-data">
             <input type="text" name="editid" value="<%=single.id%>" hidden>
-            <input type="text" name="title" value="<%=single.title%>" placeholder="Enter blog title" required>
-            <input type="text" name="description" value="<%=single.description%>" placeholder="Enter blog description" required>
-            <input type="file" name="image">
-            <input type="submit" value="Update Blog">
+
+            <div class="input-group">
+                <label for="title">Blog Title</label>
+                <input type="text" id="title" name="title" value="<%=single.title%>" placeholder="Enter blog title" required>
+            </div>
+
+            <div class="input-group">
+                <label for="description">Blog Description</label>
+                <input type="text" id="description" name="description" value="<%=single.description%>" placeholder="Enter blog description" required>
+            </div>
+
+            <div class="input-group">
+                <label for="image">Upload New Image (Optional)</label>
+                <input type="file" id="image" name="image">
+            </div>
+
+            <button type="submit" class="btn">Update Blog</button>
         </form>
-        <a href="/viewblog">View Blogs</a>
+        <a href="/viewblog" class="link">← Back to Blogs</a>
     </div>
 </body>
 </html>

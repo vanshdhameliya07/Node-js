@@ -5,14 +5,19 @@ const registerpage = (req, res) => {
     return res.render(`register`);
 }
 const loginpage = (req, res) => {
-
+    if(res.locals.users){
+        return res.redirect('/viewblog')
+    }
     return res.render(`login`);
 }
 const viewblogpage = async (req, res) => {
-    const allrecord = await BlogModel.find({});
-    return res.render('viewblog',{
-        record:allrecord
-    })
+   
+        const allrecord = await BlogModel.find({});
+        return res.render('viewblog', {
+            record: allrecord
+        })
+   
+
 }
 
 const aboutpage = (req, res) => {

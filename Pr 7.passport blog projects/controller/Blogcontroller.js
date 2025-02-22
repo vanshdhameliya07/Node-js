@@ -4,6 +4,7 @@ const fs = require('fs');
 const addblog = (req, res) => {
     return res.render(`addblog`);
 }
+
 const editblog = (req, res) => {
     return res.render(`editblog`);
 }
@@ -87,6 +88,16 @@ const UpdateUser = async (req, res) => {
         return false;
     }
 }
+const logOut = (req, res) => {
+    req.logout((err) => {
+        if (err) {
+            console.log(err);
+            return false;
+        }
+    })
+    console.log('log out user')
+    return res.redirect('/');
+}
 module.exports = {
-    addblog, blogUser, deleteUser, editblog, editUser, UpdateUser
+    addblog, blogUser, deleteUser, editblog, editUser, UpdateUser, logOut
 }

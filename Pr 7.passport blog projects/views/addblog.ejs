@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Blog</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -16,40 +19,46 @@
         }
         .container {
             background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
             text-align: center;
-            width: 350px;
+            width: 400px;
         }
         h1 {
             margin-bottom: 20px;
             color: #333;
+            font-size: 24px;
         }
         input[type="text"], input[type="file"] {
             width: 100%;
-            padding: 10px;
-            margin: 8px 0;
+            padding: 12px;
+            margin: 10px 0;
             border: 1px solid #ccc;
-            border-radius: 5px;
+            border-radius: 8px;
+            font-size: 16px;
         }
         input[type="submit"] {
-            background: #28a745;
+            background: #6e8efb;
             color: white;
-            padding: 10px;
+            padding: 12px;
             border: none;
-            border-radius: 5px;
+            border-radius: 8px;
             cursor: pointer;
             width: 100%;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background 0.3s;
         }
         input[type="submit"]:hover {
-            background: #218838;
+            background: #5a7de7;
         }
         a {
             display: block;
-            margin-top: 10px;
+            margin-top: 15px;
             text-decoration: none;
-            color: #007bff;
+            color: #6e8efb;
+            font-weight: bold;
         }
         a:hover {
             text-decoration: underline;

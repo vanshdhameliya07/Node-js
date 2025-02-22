@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>View Blog Page</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #6e8efb, #a777e3);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -15,112 +17,186 @@
             margin: 0;
             padding: 20px;
         }
+
         .container {
             width: 90%;
-            max-width: 340px;
+            max-width: 1000px;
             text-align: center;
         }
-        h1 {
-            color: #333;
+
+        /* Header styling (matches container width) */
+        .header {
+            width: 1000px;
+            max-width: 1000px;
+            /* Matches the container */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
             margin-bottom: 20px;
         }
+
+        .header h1 {
+            color: white;
+            font-size: 28px;
+            margin: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 15px;
+        }
+
         .blog-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            justify-items: center;
         }
+
         .blog-card {
             background: white;
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
             text-align: left;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            height: 100%;
+            width: 280px;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
+
+        .blog-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+
         .blog-image {
             width: 100%;
             height: 180px;
             object-fit: cover;
-            border-radius: 5px;
+            border-radius: 10px;
         }
+
         .blog-content {
-            padding: 10px 0;
+            padding: 15px 0;
             flex-grow: 1;
         }
+
         .blog-title {
-            font-size: 18px;
+            font-size: 20px;
             font-weight: bold;
             color: #333;
+            margin-bottom: 5px;
         }
+
         .blog-description {
             font-size: 14px;
             color: #555;
             margin: 8px 0;
         }
+
         .blog-actions {
             display: flex;
             justify-content: space-between;
-            align-items: center;
-            margin-top: 10px;
+            margin-top: 12px;
         }
+
         .btn {
-            padding: 8px 12px;
+            padding: 10px 14px;
             border: none;
-            border-radius: 5px;
+            border-radius: 6px;
             text-decoration: none;
             color: white;
             font-size: 14px;
             cursor: pointer;
-            transition: background 0.3s;
+            transition: background 0.3s, transform 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
-        .btnadd{
-            margin-top: 20px;
+
+        .btn:hover {
+            transform: scale(1.05);
         }
+
         .btn.delete {
-            background: red;
+            background: #ff4d4d;
         }
+
         .btn.delete:hover {
-            background: darkred;
+            background: #cc0000;
         }
+
         .btn.edit {
-            background: #007bff;
+            background: #1e90ff;
         }
+
         .btn.edit:hover {
             background: #0056b3;
         }
-        .btn.add {
-            background: green;
-            margin-top: 45px;
-            display: inline-block;
-            padding: 10px 15px;
+
+        .btn.add,
+        .btn.logout {
+            background: #28a745;
+            padding: 10px 16px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 8px;
         }
-        .btn.add:hover {
-            background: darkgreen;
+
+        .btn.logout {
+            background: #ff4757;
+        }
+
+        .btn.logout:hover {
+            background: #e84118;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
-        <h1>View Blog Page</h1>
-        <div class="blog-grid">
-            <% record.map((val, i) => { %>
-            <div class="blog-card">
-                <img src="/<%= val.image %>" alt="Blog Image" class="blog-image">
-                <div class="blog-content">
-                    <div class="blog-title"><%= val.title %></div>
-                    <div class="blog-description"><%= val.description %></div>
-                </div>
-                <div class="blog-actions">
-                    <a href="/blog/edituser?eid=<%= val.id %>" class="btn edit">Edit</a>
-                    <a href="/blog/deleteuser?did=<%= val.id %>" class="btn delete">Delete</a>
-                </div>
+        <!-- Header with navigation -->
+        <div class="header">
+            <h1>View Blog Page</h1>
+            <div class="nav-links">
+                <a href="/blog/addblog" class="btn add">
+                    <i class="fas fa-plus-circle"></i> Add Blog
+                </a>
+                <a href="/blog/logout" class="btn logout">
+                    <i class="fas fa-sign-out-alt"></i> Log Out
+                </a>
             </div>
-            <% }) %>
         </div>
-        <a href="/blog/addblog" class="btn add">Add Blog</a>
+
+        <div class="blog-grid">
+            <% record.map((val, i)=> { %>
+                <div class="blog-card">
+                    <img src="/<%= val.image %>" alt="Blog Image" class="blog-image">
+                    <div class="blog-content">
+                        <div class="blog-title">
+                            <%= val.title %>
+                        </div>
+                        <div class="blog-description">
+                            <%= val.description %>
+                        </div>
+                    </div>
+                    <div class="blog-actions">
+                        <a href="/blog/edituser?eid=<%= val.id %>" class="btn edit">
+                            <i class="fas fa-pencil-alt"></i> Edit
+                        </a>
+                        <a href="/blog/deleteuser?did=<%= val.id %>" class="btn delete">
+                            <i class="fas fa-trash-alt"></i> Delete
+                        </a>
+                    </div>
+                </div>
+                <% }) %>
+        </div>
     </div>
 </body>
+
 </html>

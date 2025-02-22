@@ -14,6 +14,7 @@ passport.use(new passportLocal({
             console.log(`Email and password not valid`);
             return done(null, false);
         }
+
         return done(null, user)
     }
     catch (err) {
@@ -42,7 +43,7 @@ passport.checkUser = (req, res, next) => {
     if (!req.isAuthenticated()) {
         return res.redirect(`/`);
     }
-    return next()
+    return next();
 }
 passport.setuser = (req, res, next) => {
     if (req.isAuthenticated()) {
@@ -51,6 +52,4 @@ passport.setuser = (req, res, next) => {
     return next()
 }
 
-
 module.exports = passport;
-
