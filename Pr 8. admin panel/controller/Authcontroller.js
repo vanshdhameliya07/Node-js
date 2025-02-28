@@ -5,6 +5,9 @@ const registerpage = (req, res) => {
     return res.render(`register`);
 }
 const loginpage = (req, res) => {
+    if (res.locals?.users) {
+        return res.redirect('/dashboard')
+    }
     return res.render(`login`);
 }
 const dashboardpage = (req, res) => {

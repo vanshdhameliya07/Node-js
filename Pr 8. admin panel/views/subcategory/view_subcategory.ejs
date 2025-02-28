@@ -14,24 +14,24 @@
         <!-- ============================================================== -->
         <div class="page-breadcrumb">
             <div class="row">
-                
+
                 <% if(locals.message?.success){ %>
                     <div class="alert alert-success">
                         <%=locals.message?.success%>
                     </div>
                     <% }%>
-                <div class="col-12 d-flex no-block align-items-center">
-                    
-                    <h4 class="page-title">Tables</h4>
-                    <div class="ml-auto text-right">
-                        <nav aria-label="breadcrumb">
-                            <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Library</li>
-                            </ol>
-                        </nav>
-                    </div>
-                </div>
+                        <div class="col-12 d-flex no-block align-items-center">
+
+                            <h4 class="page-title">Tables</h4>
+                            <div class="ml-auto text-right">
+                                <nav aria-label="breadcrumb">
+                                    <ol class="breadcrumb">
+                                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                        <li class="breadcrumb-item active" aria-current="page">Library</li>
+                                    </ol>
+                                </nav>
+                            </div>
+                        </div>
             </div>
         </div>
         <!-- ============================================================== -->
@@ -55,6 +55,7 @@
                                 <tr>
                                     <th scope="col">srno</th>
                                     <th scope="col">Category</th>
+                                    <th scope="col">subCategory</th>
                                     <th scope="col">Action</th>
                                     <th scope="col">Status</th>
                                 </tr>
@@ -68,13 +69,17 @@
                                             <%=++i%>
                                         </td>
                                         <td>
-                                            <%=val.category%>
+                                            <%=val.categoryId?.category%>
                                         </td>
                                         <td>
-                                            <a href="/category/deleteuser?did=<%=val.id%>" class="btn-success btn btn">
+                                            <%=val?.subcategory%>
+                                        </td>
+                                        <td>
+                                            <a href="/subcategory/deleteuser?did=<%=val.id%>"
+                                                class="btn-success btn btn">
                                                 <i class="fa fa-trash text-white "></i>
                                             </a>
-                                            <a href="/category/edituser?eid=<%=val.id%>" class="btn-primary btn btn">
+                                            <a href="/subcategory/edituser?eid=<%=val.id%>" class="btn-primary btn btn">
                                                 <i class="fa fa-edit"></i>
                                             </a>
                                         </td>
