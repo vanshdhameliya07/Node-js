@@ -386,17 +386,10 @@
 
 
                                     <div class="col-sm-6 col-md-10">
-                                        <label class="col-sm-6 col-md-2 col-form-label">ExubCategory</label>
-                                        <select name="exsubcategory" id="exsubcategory" class="form-control"
-                                            onchange="exsubchange()">
+                                        <label class="col-sm-6 col-md-2 col-form-label">ExsubCategory</label>
+                                        <select name="exsubcategory" id="exsubcategory" class="form-control">
                                             <option>---select exsubcategory---</option>
-                                            <% exsubcategory.map((val,i)=>{
-                                                %>
-                                                <option <% if(single?.exsubcategoryId.exsubcategory==val?.exsubcategory)
-                                                    {%>selected<%} %> value="<%=val?.id%>" >
-                                                            <%=val.exsubcategory%>
-                                                </option>
-                                                <% }) %>
+
                                         </select>
                                     </div>
 
@@ -493,8 +486,8 @@
     const editSubcategory = () => {
         let catid = `<%= single?.categoryId?.id %>`;
         let subcateid = `<%= single?.subcategoryId?.id %>`;
-        $.ajax({   
-            method: 'GET',       
+        $.ajax({
+            method: 'GET',
             url: `/exsubcategory/ajaxcategorywiserecord?categoryid=${catid}`,
             success: function (res) {
                 let subcategory = res.subcategory;
@@ -514,27 +507,35 @@
     }
     editSubcategory();
 
-    exsubchange = () => {
-        let exsubcatid = document.getElementById('exsubcategory').value;
+
+    const Exubcategory = () => {
+
+        let subcateid = `<%= single?.subcategoryId?.id %>`;
+        let exsubcateid = `<%= single?.exsubcategoryId?.id %>`;
+
+
         $.ajax({
             method: 'GET',
-            url: `/exsubcategory/ajaxcategorywiserecord?exsubcategoryid=${exsubcatid}`,
+            url: `/product/ajaxcategorywiserecord?subcategoryId=${subcateid}`,
             success: function (res) {
-                if (res.success) {
-                    let tbl = "";
-                    tbl += `<option value="">----select category-----</option>`;
-                    let exsubcategory = res.exsubcategory;
-                    exsubcategory.map((val) => {
-                        tbl += `
-                        <option value=${val?._id}>${val?.subcategory} </option>
-                              `
-                    });
-                    document.getElementById('subcategory').innerHTML = tbl;
-                }
+                console.log(res)
+                let subcategory = res.subcategory;
+                let exsubcategory = res.exsubcategory;
+
+                let tbl = "";
+                tbl += `<option>---select exsubcategory---</option>`
+                exsubcategory.map((val) => {
+                    tbl += `
+                 <option ${val?._id == subcateid ? 'selected' : ''} value=${val?._id}>${val?.exsubcategory}</option>
+        `
+                })
+                document.getElementById('exsubcategory').innerHTML = tbl
             }
         })
 
-    }   
+    }
+    Exubcategory();
+
 </script>
 
 </html>

@@ -91,13 +91,13 @@ const edituser = async (req, res) => {
         const subcategory = await SubcategoryModel.find({ status: 'active' });
         const exsubcategory = await ExsubcategoryModel.find({ status: 'active' })
 
-        const single = await ProductModel.findById(id).populate('categoryId').populate('subcategoryId')
+        const single = await ProductModel.findById(id).populate('categoryId').populate('subcategoryId').populate('exsubcategoryId')
 
         return res.render('product/editproduct', {
             category: category,
             subcategory: subcategory,
             exsubcategory: exsubcategory,
-            single
+            single: single
         })
     } catch (err) {
         console.log(err);
@@ -123,12 +123,14 @@ const Updateproduct = async (req, res) => {
 }
 const AjaxCategorywiseRecord = async (req, res) => {
     try {
-        let subcategoryid = req.query.subcategoryId
-        let exsubcat = await ExsubcategoryModel.find({ subcategoryId: subcategoryid }).populate('categoryId').populate('subcategoryId');
+        let subcategoryid = req.query.subcategoryId;
+        let subcategory = await SubcategoryModel.find({ subcategoryId: subcategoryid }).populate('categoryId')
+        let exsubcategory = await ExsubcategoryModel.find({ subcategoryId: subcategoryid }).populate('categoryId').populate('subcategoryId')
         return res.status(200).send({
             success: true,
             message: 'record successfully fetch',
-            exsubcategory: exsubcat
+            exsubcategory: exsubcategory,
+            subcategory: subcategory,
         })
 
     } catch (err) {
