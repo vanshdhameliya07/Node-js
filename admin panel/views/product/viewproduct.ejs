@@ -7,7 +7,7 @@
     <title>DeskApp - Bootstrap Admin Dashboard HTML Template</title>
 
     <!-- Site favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/vendors/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" hre/f="/vendors/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/vendors/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/vendors/images/favicon-16x16.png">
 
@@ -134,7 +134,7 @@
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
                                     </a>
                                 </li>
-                                <li>
+                                <li>/
                                     <a href="#">
                                         <img src="/vendors/images/photo4.jpg" alt="">
                                         <h3>Renee I. Hansen</h3>
@@ -165,7 +165,7 @@
                         <a class="dropdown-item" href="profile.html"><i class="dw dw-user1"></i> Profile</a>
                         <a class="dropdown-item" href="profile.html"><i class="dw dw-settings2"></i> Setting</a>
                         <a class="dropdown-item" href="faq.html"><i class="dw dw-help"></i> Help</a>
-                        <a class="dropdown-item" href="/category/logout"><i class="dw dw-logout"></i> Log Out</a>
+                        <a class="dropdown-item" href=""><i class="dw dw-logout"></i> Log Out</a>
                     </div>
                 </div>
             </div>
@@ -279,7 +279,6 @@
             <div class="sidebar-menu">
                 <ul id="accordion-menu">
 
-
                     <li class="dropdown">
                         <a href="javascript:;" class="dropdown-toggle">
                             <span class="micon dw dw-house-1"></span><span class="mtext">Category</span>
@@ -322,6 +321,7 @@
                             <li><a href="/exsubcategory/exviewsubcategory">View exsubcategory</a></li>
                         </ul>
                     </li>
+
                     <li class="dropdown">
                         <a href="javascript:;" class="dropdown-toggle">
                             <span class="micon dw dw-right-arrow1"></span><span class="mtext">Product</span>
@@ -341,156 +341,152 @@
     <div class="main-container">
         <div class="pd-ltr-20 xs-pd-20-10">
             <div class="min-height-200px">
-
-                <!-- Default Basic Forms Start -->
-                <div class="pd-20 card-box mb-30">
-                    <div class="clearfix">
-                        <div class="pull-left">
-                            <h4 class="text-blue h4">Default Basic Forms</h4>
-                            <p class="mb-30">All bootstrap element classies</p>
-                        </div>
-                        <div class="pull-right">
-                            <a href="#basic-form1" class="btn btn-primary btn-sm scroll-click" rel="content-y"
-                                data-toggle="collapse" role="button"><i class="fa fa-code"></i> Source Code</a>
-                        </div>
+                <% if(locals.message?.success){ %>
+                    <div class="alert alert-success">
+                        <%=locals.message?.success%>
                     </div>
-                    <% if(locals.message?.success){ %>
-                        <div class="alert alert-success">
-                            <%=locals.message?.success%>
-                        </div>
-                        <% }%>
-                            <form action="/category/insertcategory" method="post">
-                                <div class="form-group row">
-                                    <label class="col-sm-12 col-md-2 col-form-label">Category</label>
-                                    <div class="col-sm-12 col-md-10">
-                                        <input class="form-control" type="text" placeholder="Johnny Brown"
-                                            name="category">
+                    <% }%>
+                        <div class="page-header">
+                            <div class="row">
+                                <div class="col-md-6 col-sm-12">
+                                    <div class="title">
+                                        <h4>Basic Tables</h4>
                                     </div>
-
-
+                                    <nav aria-label="breadcrumb" role="navigation">
+                                        <ol class="breadcrumb">
+                                            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                            <li class="breadcrumb-item active" aria-current="page">Basic Tables</li>
+                                        </ol>
+                                    </nav>
                                 </div>
-                                <input type="submit" value="Submit">
-                            </form>
-                            <div class="collapse collapse-box" id="basic-form1">
+                                <div class="col-md-6 col-sm-12 text-right">
+                                    <div class="dropdown">
+                                        <a class="btn btn-primary dropdown-toggle" href="#" role="button"
+                                            data-toggle="dropdown">
+                                            January 2018
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right">
+                                            <a class="dropdown-item" href="#">Export List</a>
+                                            <a class="dropdown-item" href="#">Policies</a>
+                                            <a class="dropdown-item" href="#">View Assets</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- basic table  Start -->
+                        <div class="pd-20 card-box mb-30">
+                            <div class="clearfix mb-20">
+                                <div class="pull-left">
+                                    <h4 class="text-blue h4">Basic Table</h4>
+                                    <p>Add class <code>.table</code></p>
+                                </div>
+                                <div class="pull-right">
+                                    <a href="#basic-table" class="btn btn-primary btn-sm scroll-click" rel="content-y"
+                                        data-toggle="collapse" role="button"><i class="fa fa-code"></i> Source Code</a>
+                                </div>
+                            </div>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">srno</th>
+                                        <th scope="col">Category</th>
+                                        <th scope="col">subcategory</th>
+                                        <th scope="col">exsubcategory</th>
+                                        <th scope="col">product</th>
+                                        <th scope="col">Action</th>
+                                        <th scope="col">Status</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <%product.map((val,i)=>{
+                                        %>
+                                        <tr>
+                                            <td>
+                                                <%=++i%>
+                                            </td>
+                                            <td>
+                                                <%=val.categoryId?.category%>
+                                            </td>
+                                            <td>
+                                                <%=val.subcategoryId?.subcategory%>
+                                            </td>
+                                            <td>
+                                                <%=val.exsubcategoryId?.exsubcategory%>
+                                            </td>
+                                            <td>
+                                                <%=val.product%>
+                                            </td>
+                                            <td>
+                                                <a href="/product/deleteuser?did=<%=val.id%>"
+                                                    class="btn-success btn btn">
+                                                    <i class="fa fa-trash text-white"></i>
+                                                </a>
+                                                <a href="/product/edituser?eid=<%=val.id%>" class="btn-primary btn btn">
+                                                    <i class="fa fa-edit"></i>
+                                                </a>
+                                            </td>
+
+                                            <td>
+                                                <%if(val.status=="active"){ %>
+                                                    <a class="btn btn-success btn-sm"
+                                                        href="/product/changestatus?id=<%=val.id%>&status=deactive">
+                                                        <%=val.status%>
+                                                    </a>
+                                                    <% } else{%>
+                                                        <a class="btn btn-danger btn-sm"
+                                                            href="/product/changestatus?id=<%=val.id%>&status=active">
+                                                            <%=val.status%>
+                                                        </a>
+                                                        <%} %>
+                                            </td>
+                                        </tr>
+                                        <% })%>
+                                </tbody>
+                            </table>
+                            <div class="collapse collapse-box" id="basic-table">
                                 <div class="code-box">
                                     <div class="clearfix">
                                         <a href="javascript:;" class="btn btn-primary btn-sm code-copy pull-left"
-                                            data-clipboard-target="#copy-pre"><i class="fa fa-clipboard"></i> Copy
+                                            data-clipboard-target="#basic-table-code"><i class="fa fa-clipboard"></i>
+                                            Copy
                                             Code</a>
-                                        <a href="#basic-form1" class="btn btn-primary btn-sm pull-right" rel="content-y"
+                                        <a href="#basic-table" class="btn btn-primary btn-sm pull-right" rel="content-y"
                                             data-toggle="collapse" role="button"><i class="fa fa-eye-slash"></i> Hide
                                             Code</a>
                                     </div>
-                                    <pre><code class="xml copy-pre" id="copy-pre">
-<form>
-	<div class="form-group row">
-		<label class="col-sm-12 col-md-2 col-form-label">Text</label>
-		<div class="col-sm-12 col-md-10">
-			<input class="form-control" type="text" placeholder="Johnny Brown">
-		</div>
-	</div>
-	<div class="form-group row">
-		<label class="col-sm-12 col-md-2 col-form-label">Search</label>
-		<div class="col-sm-12 col-md-10">
-			<input class="form-control" placeholder="Search Here" type="search">
-		</div>
-	</div>
-	<div class="form-group row">
-		<label class="col-sm-12 col-md-2 col-form-label">Email</label>
-		<div class="col-sm-12 col-md-10">
-			<input class="form-control" value="bootstrap@example.com" type="email">
-		</div>
-	</div>
-	<div class="form-group row">
-		<label class="col-sm-12 col-md-2 col-form-label">URL</label>
-		<div class="col-sm-12 col-md-10">
-			<input class="form-control" value="https://getbootstrap.com" type="url">
-		</div>
-	</div>
-	<div class="form-group row">
-		<label class="col-sm-12 col-md-2 col-form-label">Telephone</label>
-		<div class="col-sm-12 col-md-10">
-			<input class="form-control" value="1-(111)-111-1111" type="tel">
-		</div>
-	</div>
-	<div class="form-group row">
-		<label class="col-sm-12 col-md-2 col-form-label">Password</label>
-		<div class="col-sm-12 col-md-10">
-			<input class="form-control" value="password" type="password">
-		</div>
-	</div>
-	<div class="form-group row">
-		<label class="col-sm-12 col-md-2 col-form-label">Number</label>
-		<div class="col-sm-12 col-md-10">
-			<input class="form-control" value="100" type="number">
-		</div>
-	</div>
-	<div class="form-group row">
-		<label for="example-datetime-local-input" class="col-sm-12 col-md-2 col-form-label">Date and time</label>
-		<div class="col-sm-12 col-md-10">
-			<input class="form-control datetimepicker" placeholder="Choose Date anf time" type="text">
-		</div>
-	</div>
-	<div class="form-group row">
-		<label class="col-sm-12 col-md-2 col-form-label">Date</label>
-		<div class="col-sm-12 col-md-10">
-			<input class="form-control date-picker" placeholder="Select Date" type="text">
-		</div>
-	</div>
-	<div class="form-group row">
-		<label class="col-sm-12 col-md-2 col-form-label">Month</label>
-		<div class="col-sm-12 col-md-10">
-			<input class="form-control month-picker" placeholder="Select Month" type="text">
-		</div>
-	</div>
-	<div class="form-group row">
-		<label class="col-sm-12 col-md-2 col-form-label">Time</label>
-		<div class="col-sm-12 col-md-10">
-			<input class="form-control time-picker" placeholder="Select time" type="text">
-		</div>
-	</div>
-	<div class="form-group row">
-		<label class="col-sm-12 col-md-2 col-form-label">Select</label>
-		<div class="col-sm-12 col-md-10">
-			<select class="custom-select col-12">
-				<option selected="">Choose...</option>
-				<option value="1">One</option>
-				<option value="2">Two</option>
-				<option value="3">Three</option>
-			</select>
-		</div>
-	</div>
-	<div class="form-group row">
-		<label class="col-sm-12 col-md-2 col-form-label">Color</label>
-		<div class="col-sm-12 col-md-10">
-			<input class="form-control" value="#563d7c" type="color">
-		</div>
-	</div>
-	<div class="form-group row">
-		<label class="col-sm-12 col-md-2 col-form-label">Input Range</label>
-		<div class="col-sm-12 col-md-10">
-			<input class="form-control" value="50" type="range">
-		</div>
-	</div>
-</form>
+                                    <pre><code class="xml copy-pre" id="basic-table-code">
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+    </tr>
+  </tbody>
+</table>
 							</code></pre>
                                 </div>
                             </div>
-                </div>
-                <!-- Default Basic Forms End -->
+                        </div>
+                        <!-- basic table  End -->
+                        <!-- Bordered table  start -->
 
-                <!-- horizontal Basic Forms Start -->
+                        <!-- Bordered table End -->
+                        <!-- Striped table start -->
 
-                <!-- horizontal Basic Forms End -->
+                        <!-- Striped table End -->
+                        <!-- Responsive tables Start -->
 
-                <!-- Form grid Start -->
+                        <!-- Responsive tables End -->
+                        <!-- Contextual classes Start -->
 
-                <!-- Form grid End -->
-
-                <!-- Input Validation Start -->
-
-                <!-- Input Validation End -->
-
+                        <!-- Contextual classes End -->
             </div>
             <div class="footer-wrap pd-20 mb-20 card-box">
                 DeskApp - Bootstrap 4 Admin Template By <a href="https://github.com/dropways" target="_blank">Ankit

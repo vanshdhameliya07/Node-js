@@ -7,7 +7,7 @@
     <title>DeskApp - Bootstrap Admin Dashboard HTML Template</title>
 
     <!-- Site favicon -->
-    <link rel="apple-touch-icon" sizes="180x180" href="/vendors/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" hre/f="/vendors/images/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/vendors/images/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/vendors/images/favicon-16x16.png">
 
@@ -108,42 +108,42 @@
                             <ul>
                                 <li>
                                     <a href="#">
-                                        <img src="vendors/images/img.jpg" alt="">
+                                        <img src="/vendors/images/img.jpg" alt="">
                                         <h3>John Doe</h3>
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <img src="vendors/images/photo1.jpg" alt="">
+                                        <img src="/vendors/images/photo1.jpg" alt="">
                                         <h3>Lea R. Frith</h3>
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <img src="vendors/images/photo2.jpg" alt="">
+                                        <img src="/vendors/images/photo2.jpg" alt="">
                                         <h3>Erik L. Richards</h3>
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <img src="vendors/images/photo3.jpg" alt="">
+                                        <img src="/vendors/images/photo3.jpg" alt="">
                                         <h3>John Doe</h3>
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
                                     </a>
                                 </li>
-                                <li>
+                                <li>/
                                     <a href="#">
-                                        <img src="vendors/images/photo4.jpg" alt="">
+                                        <img src="/vendors/images/photo4.jpg" alt="">
                                         <h3>Renee I. Hansen</h3>
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
-                                        <img src="vendors/images/img.jpg" alt="">
+                                        <img src="/vendors/images/img.jpg" alt="">
                                         <h3>Vicki M. Coleman</h3>
                                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed...</p>
                                     </a>
@@ -268,8 +268,8 @@
     <div class="left-side-bar">
         <div class="brand-logo">
             <a href="index.html">
-                <img src="vendors/images/deskapp-logo.svg" alt="" class="dark-logo">
-                <img src="vendors/images/deskapp-logo-white.svg" alt="" class="light-logo">
+                <img src="/vendors/images/deskapp-logo.svg" alt="" class="dark-logo">
+                <img src="/vendors/images/deskapp-logo-white.svg" alt="" class="light-logo">
             </a>
             <div class="close-sidebar" data-toggle="left-sidebar-close">
                 <i class="ion-close-round"></i>
@@ -322,8 +322,15 @@
                         </ul>
                     </li>
 
-
-
+                    <li class="dropdown">
+                        <a href="javascript:;" class="dropdown-toggle">
+                            <span class="micon dw dw-right-arrow1"></span><span class="mtext">Product</span>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="/product/addproduct">Add Product</a></li>
+                            <li><a href="/product/viewproduct">View Product</a></li>
+                        </ul>
+                    </li>
 
                 </ul>
             </div>
@@ -422,12 +429,12 @@
                                             <td>
                                                 <%if(val.status=="active"){ %>
                                                     <a class="btn btn-success btn-sm"
-                                                        href="/category/changestatus?id=<%=val.id%>&status=deactive">
+                                                        href="/exsubcategory/changestatus?id=<%=val.id%>&status=deactive">
                                                         <%=val.status%>
                                                     </a>
                                                     <% } else{%>
                                                         <a class="btn btn-danger btn-sm"
-                                                            href="/category/changestatus?id=<%=val.id%>&status=active">
+                                                            href="/exsubcategory/changestatus?id=<%=val.id%>&status=active">
                                                             <%=val.status%>
                                                         </a>
                                                         <%} %>

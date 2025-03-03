@@ -323,7 +323,15 @@
                         </ul>
                     </li>
 
-
+                    <li class="dropdown">
+                        <a href="javascript:;" class="dropdown-toggle">
+                            <span class="micon dw dw-right-arrow1"></span><span class="mtext">Product</span>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="/product/addproduct">Add Product</a></li>
+                            <li><a href="/product/viewproduct">View Product</a></li>
+                        </ul>
+                    </li>
 
                 </ul>
             </div>
@@ -543,6 +551,7 @@
             method: 'GET',
             url: `/exsubcategory/ajaxcategorywiserecord?categoryid=${catid}`,
             success: function (res) {
+                console.log(res)
                 let subcategory = res.subcategory;
                 let category = res.category;
                 let tbl = "";
@@ -566,6 +575,7 @@
         let catid = document.getElementById('category').value;
 
         console.log(catid);
+        
         $.ajax({
             method: 'GET',
             url: `/exsubcategory/ajaxcategorywiserecord?categoryid=${catid}`,

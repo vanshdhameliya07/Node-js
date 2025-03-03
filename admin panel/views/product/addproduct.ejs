@@ -25,6 +25,8 @@
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
@@ -165,14 +167,11 @@
                         <a class="dropdown-item" href="profile.html"><i class="dw dw-user1"></i> Profile</a>
                         <a class="dropdown-item" href="profile.html"><i class="dw dw-settings2"></i> Setting</a>
                         <a class="dropdown-item" href="faq.html"><i class="dw dw-help"></i> Help</a>
-                        <a class="dropdown-item" href="/category/logout"><i class="dw dw-logout"></i> Log Out</a>
+                        <a class="dropdown-item" href="/exsubcategory/logout"><i class="dw dw-logout"></i> Log Out</a>
                     </div>
                 </div>
             </div>
-            <div class="github-link">
-                <a href="https://github.com/dropways/deskapp" target="_blank"><img src="vendors/images/github.svg"
-                        alt=""></a>
-            </div>
+
         </div>
     </div>
 
@@ -280,6 +279,7 @@
                 <ul id="accordion-menu">
 
 
+
                     <li class="dropdown">
                         <a href="javascript:;" class="dropdown-toggle">
                             <span class="micon dw dw-house-1"></span><span class="mtext">Category</span>
@@ -322,6 +322,7 @@
                             <li><a href="/exsubcategory/exviewsubcategory">View exsubcategory</a></li>
                         </ul>
                     </li>
+
                     <li class="dropdown">
                         <a href="javascript:;" class="dropdown-toggle">
                             <span class="micon dw dw-right-arrow1"></span><span class="mtext">Product</span>
@@ -359,18 +360,56 @@
                             <%=locals.message?.success%>
                         </div>
                         <% }%>
-                            <form action="/category/insertcategory" method="post">
+                            <form action="/product/insertproduct" method="post">
+
                                 <div class="form-group row">
-                                    <label class="col-sm-12 col-md-2 col-form-label">Category</label>
-                                    <div class="col-sm-12 col-md-10">
-                                        <input class="form-control" type="text" placeholder="Johnny Brown"
-                                            name="category">
+
+                                    <div class="col-sm-9">
+
+                                        <label class="col-sm-6 col-md-2 col-form-label">Category</label>
+                                        <select name="category" class="form-control" id="category"
+                                            onchange="categorychange()">
+                                            <option value="">---select category---</option>
+                                            <% category.map((val,i)=>{
+                                                %>
+                                                <option value="<%=val.id%>">
+                                                    <%=val.category%>
+                                                </option>
+                                                <% }) %>
+                                        </select>
+
                                     </div>
 
+
+                                    <div class="col-sm-6 col-md-10">
+                                        <label class="col-sm-6 col-md-2 col-form-label">SubCategory</label>
+                                        <select name="subcategory" id="subcategory" onchange="subcategoryRecord()"
+                                            class="form-control">
+                                            <option>---select subcategory---</option>
+                                        </select>
+
+                                    </div>
+
+
+                                    <div class="col-sm-6 col-md-10">
+                                        <label class="col-sm-6 col-md-2 col-form-label">ExubCategory</label>
+                                        <select name="exsubcategory" id="exsubcategory" class="form-control">
+                                            <option>---select exsubcategory---</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-sm-6 col-md-10">
+                                        <label class="col-sm-6 col-md-2 col-form-label">ExubCategory</label>
+                                        <input type="text" name="product" class="form-control"
+                                            placeholder="Enter product">
+                                    </div>
 
                                 </div>
                                 <input type="submit" value="Submit">
                             </form>
+
+
+
                             <div class="collapse collapse-box" id="basic-form1">
                                 <div class="code-box">
                                     <div class="clearfix">
@@ -503,6 +542,62 @@
     <script src="/vendors/scripts/script.min.js"></script>
     <script src="/vendors/scripts/process.js"></script>
     <script src="/vendors/scripts/layout-settings.js"></script>
+
+
 </body>
+<script type="text/javascript">
+
+
+    const categorychange = () => {
+
+        let catid = document.getElementById('category').value;
+
+        $.ajax({
+            method: 'GET',
+            url: `/exsubcategory/ajaxcategorywiserecord?categoryid=${catid}`,
+            success: function (res) {
+
+                if (res.success) {
+                    let tbl = "";
+                    tbl += `<option value="">----select category-----</option>`;
+                    let category = res.category;
+                    category.map((val) => {
+                        tbl += `
+                        <option value=${val?._id}>${val?.subcategory} </option>
+                              `
+                    })
+                    document.getElementById('subcategory').innerHTML = tbl;
+                }
+            }
+        })
+
+    }
+
+    const subcategoryRecord = () => {
+        let subcategoryid = document.getElementById('subcategory').value;
+
+        $.ajax({
+            type: 'GET',
+            url: `/product/ajaxcategorywiserecord?subcategoryId=${subcategoryid}`,
+            success: function (res) {
+
+                if (res.success) {
+
+                    let exsubcategory = res.exsubcategory;
+                    let tbl = "";
+                    tbl += `<option value="">---select exsubcategory---</option>`
+                    exsubcategory.map((val) => {
+                        tbl += `<option value='${val?._id}'>${val?.exsubcategory}</option>`
+                    })
+                    document.getElementById('exsubcategory').innerHTML = tbl
+                }
+
+            }
+        })
+
+    }
+
+
+</script>
 
 </html>

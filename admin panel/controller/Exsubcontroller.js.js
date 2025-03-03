@@ -21,6 +21,7 @@ const exsubcategorypage = async (req, res) => {
 }
 const ajaxCategorywiseRecord = async (req, res) => {
     let categoryid = req.query.categoryid;
+
     try {
 
         let category = await SubcategoryModel.find({ categoryId: categoryid }).populate('categoryId');
@@ -130,6 +131,24 @@ const UpdateExsubcategory = async (req, res) => {
     }
 }
 
+const Changestatus = async (req, res) => {
+    let id = req.query.id;
+    let status = req.query.status;
+    if (status == "deactive") {
+        await ExsubcategoryModel.findByIdAndUpdate(id, {
+            status: "deactive"
+        })
+    }
+
+    else {
+        await ExsubcategoryModel.findByIdAndUpdate(id, {
+            status: "active"
+        })
+    }
+    req.flash('success', 'Category Successfully Changed')
+    return res.redirect('/exsubcategory/exviewsubcategory');
+}
+
 module.exports = {
-    exsubcategorypage, exsubviewcategorypage, logOut, insertExsubcategory, deleteUser, ajaxCategorywiseRecord, edituser, UpdateExsubcategory
+    exsubcategorypage, exsubviewcategorypage, logOut, insertExsubcategory, deleteUser, ajaxCategorywiseRecord, edituser, UpdateExsubcategory, Changestatus
 }

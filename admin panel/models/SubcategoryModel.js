@@ -13,6 +13,7 @@ const subcategorySchema = mongoose.Schema({
         type: String,
         default: 'active'
     }
+
 })
 const subcategory = mongoose.model('subcategory', subcategorySchema);
 module.exports = subcategory

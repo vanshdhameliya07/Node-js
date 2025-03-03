@@ -99,7 +99,25 @@ const logOut = (req, res) => {
     console.log('log out user')
     return res.redirect('/');
 }
+const Changestatus = async (req, res) => {
+    let id = req.query.id;
+    let status = req.query.status;
+    
+    if (status == "deactive") {
+        await SubcategoryModel.findByIdAndUpdate(id, {
+            status: "deactive"
+        })
+    }
+
+    else {
+        await SubcategoryModel.findByIdAndUpdate(id, {
+            status: "active"
+        })
+    }
+    req.flash('success', 'subCategory status Successfully Changed')
+    return res.redirect('/subcategory/viewsubcategory');
+}
 
 module.exports = {
-    addsubcategorypage, viewsubcategorypage, insertSubcategory, deleteUser, editUser, Updatesubcategory, logOut
+    addsubcategorypage, viewsubcategorypage, insertSubcategory, deleteUser, editUser, Updatesubcategory, logOut, Changestatus
 }
