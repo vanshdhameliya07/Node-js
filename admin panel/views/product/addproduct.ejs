@@ -360,7 +360,7 @@
                             <%=locals.message?.success%>
                         </div>
                         <% }%>
-                            <form action="/product/insertproduct" method="post">
+                            <form action="/product/insertproduct" method="post" enctype="multipart/form-data">
 
                                 <div class="form-group row">
 
@@ -399,9 +399,13 @@
                                     </div>
 
                                     <div class="col-sm-6 col-md-10">
-                                        <label class="col-sm-6 col-md-2 col-form-label">ExubCategory</label>
+                                        <label class="col-sm-6 col-md-2 col-form-label">Product</label>
                                         <input type="text" name="product" class="form-control"
                                             placeholder="Enter product">
+                                    </div>
+
+                                    <div class="form-control">
+                                        <input type="file" name="image">
                                     </div>
 
                                 </div>

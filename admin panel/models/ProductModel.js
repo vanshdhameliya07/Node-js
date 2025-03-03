@@ -20,6 +20,10 @@ const productSchema = mongoose.Schema({
     status: {
         type: String,
         default: 'active'
+    },
+    iamge: {
+        type: String,
+        required: true,
     }
 })
 const product = mongoose.model('product', productSchema);

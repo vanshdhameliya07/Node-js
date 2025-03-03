@@ -29,7 +29,8 @@ const insertProduct = async (req, res) => {
             categoryId: category,
             subcategoryId: subcategory,
             exsubcategoryId: exsubcategory,
-            product: product
+            product: product,
+            image: req?.file?.path
         })
         console.log('product create user');
         req.flash('success', 'product create')
@@ -112,8 +113,9 @@ const Updateproduct = async (req, res) => {
             categoryId: category,
             subcategoryId: subcategory,
             exsubcategoryId: exsubcategory,
-            product: product
+            product: product,
         })
+        console.log('update product user')
         return res.redirect('/product/viewproduct')
 
     } catch (err) {

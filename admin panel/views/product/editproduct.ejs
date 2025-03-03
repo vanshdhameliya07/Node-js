@@ -352,9 +352,11 @@
                             <%=locals.message?.success%>
                         </div>
                         <% }%>
-                            <form action="/product/insertproduct" method="post">
-
+                            <form action="/product/updateproduct" method="post">
+                                
+                                <input type="text" name="editid" value="<%=single.id%>">
                                 <div class="form-group row">
+                                   
 
                                     <div class="col-sm-9">
 
@@ -496,7 +498,7 @@
                 tbl += `<option>---select subcategory---</option>`
                 category.map((val) => {
 
-                    tbl += `
+                    tbl += `    
                  <option ${val?._id == subcateid ? 'selected' : ''} value=${val?._id}>${val?.subcategory}</option>
         `
                 })
@@ -506,7 +508,6 @@
 
     }
     editSubcategory();
-
 
     const Exubcategory = () => {
 

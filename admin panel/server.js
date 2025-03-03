@@ -8,7 +8,9 @@ const db = require(`./config/db`);
 
 const path = require('path');
 
+app.use('/upload', express.static(path.join(__dirname, 'upload')));
 app.use(express.static(path.join(__dirname, 'public')))
+
 
 app.use(express.urlencoded());
 
