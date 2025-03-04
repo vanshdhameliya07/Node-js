@@ -102,7 +102,7 @@ const logOut = (req, res) => {
 const Changestatus = async (req, res) => {
     let id = req.query.id;
     let status = req.query.status;
-    
+
     if (status == "deactive") {
         await SubcategoryModel.findByIdAndUpdate(id, {
             status: "deactive"

@@ -5,9 +5,10 @@ const route = express.Router();
 
 const { exsubcategorypage, ajaxCategorywiseRecord, exsubviewcategorypage, logOut, insertExsubcategory, deleteUser, edituser, UpdateExsubcategory, Changestatus } = require("../controller/Exsubcontroller.js");
 
+const passport = require('passport')
 
-route.get('/exaddsubcategory', exsubcategorypage);
-route.get('/exviewsubcategory', exsubviewcategorypage);
+route.get('/exaddsubcategory', passport.checkUser, exsubcategorypage);
+route.get('/exviewsubcategory', passport.checkUser, exsubviewcategorypage);
 route.get('/ajaxcategorywiserecord', ajaxCategorywiseRecord);
 route.get('/logout', logOut);
 route.get('/deleteuser', deleteUser);

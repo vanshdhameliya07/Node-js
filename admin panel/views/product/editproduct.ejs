@@ -352,11 +352,11 @@
                             <%=locals.message?.success%>
                         </div>
                         <% }%>
-                            <form action="/product/updateproduct" method="post">
-                                
+                            <form action="/product/updateproduct" enctype="multipart/form-data" method="post">
+
                                 <input type="text" name="editid" value="<%=single.id%>">
                                 <div class="form-group row">
-                                   
+
 
                                     <div class="col-sm-9">
 
@@ -401,6 +401,23 @@
                                         <input type="text" name="product" class="form-control"
                                             placeholder="Enter product name" value="<%=single.product%>">
                                     </div>
+
+                                    <div class="col-sm-6 col-md-10 ">
+                                        <label class="col-sm-6 col-md-2 col-form-label">image</label>
+                                        <input type="file" name="image" class="form-control">
+                                        <img src="/<%=single.image%>" width="100px" alt="">
+                                    </div>
+                                    <div class="col-sm-6 col-md-10 ">
+                                        <label class="col-sm-6 col-md-2 col-form-label">Qty</label>
+                                        <input type="text" name="qty" class="form-control" placeholder="Enter qty "
+                                            value="<%=single.qty%>">
+                                    </div>
+                                    <div class="col-sm-6 col-md-10 ">
+                                        <label class="col-sm-6 col-md-2 col-form-label">Price</label>
+                                        <input type="text" name="price" class="form-control" placeholder="Enter price"
+                                            value="<%=single.price%>">
+                                    </div>
+
 
                                 </div>
                                 <input type="submit" value="Submit">

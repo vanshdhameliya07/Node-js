@@ -1,20 +1,14 @@
 const express = require('express');
-const multer = require('multer')
+
+const multer = require('multer');
 
 const route = express.Router();
 
 const { addproductpage, insertProduct, viewproductpage, deleteUser, Changestatus, edituser, Updateproduct, AjaxCategorywiseRecord } = require('../controller/Productcontroller');
 
+const passport = require('passport')
 
-route.get('/addproduct', addproductpage);
-route.get('/viewproduct', viewproductpage);
-route.get('/ajaxcategorywiserecord', AjaxCategorywiseRecord)
-route.get('/deleteuser', deleteUser);
-route.get('/changestatus', Changestatus);
-route.get('/edituser', edituser);
-
-
-const st = multer.diskStorage({
+const sto = multer.diskStorage({
     destination: (req, res, cb) => {
         cb(null, 'upload')
     },
@@ -23,10 +17,17 @@ const st = multer.diskStorage({
         cb(null, `${file.fieldname}-${uniq}`)
     }
 })
-const imageupload = multer({ storage: st }).single('image');
+const imageupload = multer({ storage: sto }).single('image')
+
+route.get('/addproduct', passport.checkUser, addproductpage);
+route.get('/viewproduct', passport.checkUser, viewproductpage);
+route.get('/ajaxcategorywiserecord', AjaxCategorywiseRecord)
+route.get('/deleteuser', deleteUser);
+route.get('/changestatus', Changestatus);
+route.get('/edituser', edituser);
 
 
 route.post('/insertproduct', imageupload, insertProduct);
-route.post('/updateproduct', Updateproduct);
+route.post('/updateproduct', imageupload, Updateproduct);
 
 module.exports = route

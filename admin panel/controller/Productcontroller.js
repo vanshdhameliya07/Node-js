@@ -3,6 +3,8 @@ const SubcategoryModel = require('../models/SubcategoryModel');
 const ExsubcategoryModel = require('../models/ExsubcategoryModel.js')
 const ProductModel = require('../models/ProductModel');
 
+const path = require('path');
+const fs = require('fs')
 
 const addproductpage = async (req, res) => {
     try {
@@ -22,16 +24,19 @@ const addproductpage = async (req, res) => {
     }
 }
 const insertProduct = async (req, res) => {
-    const { category, subcategory, exsubcategory, product } = req.body;
-    console.log(req.body)
+    const { category, subcategory, exsubcategory, product, qty, price } = req.body;
     try {
         await ProductModel.create({
             categoryId: category,
             subcategoryId: subcategory,
             exsubcategoryId: exsubcategory,
             product: product,
-            image: req?.file?.path
+            image: req?.file?.path,
+            qty: qty,
+            price: price,
+
         })
+
         console.log('product create user');
         req.flash('success', 'product create')
         return res.redirect('/product/viewproduct')
@@ -56,6 +61,8 @@ const viewproductpage = async (req, res) => {
 const deleteUser = async (req, res) => {
     try {
         const id = req.query.did;
+        const rr = await ProductModel.findById(id);
+        fs.unlinkSync(rr.image)
         await ProductModel.findByIdAndDelete(id);
         console.log('product delete');
         return res.redirect('/product/viewproduct')
@@ -107,16 +114,45 @@ const edituser = async (req, res) => {
 
 }
 const Updateproduct = async (req, res) => {
+    const { editid, category, subcategory, exsubcategory, product, qty, price } = req.body;
+
     try {
-        const { editid, category, subcategory, exsubcategory, product } = req.body;
-        await ProductModel.findByIdAndUpdate(editid, {
-            categoryId: category,
-            subcategoryId: subcategory,
-            exsubcategoryId: exsubcategory,
-            product: product,
-        })
-        console.log('update product user')
-        return res.redirect('/product/viewproduct')
+        const ff = await ProductModel.findById(editid);
+        if (req.file) {
+            try {
+                fs.unlinkSync(ff?.image)
+            } catch (err) {
+                console.log(err);
+                return false
+            }
+            await ProductModel.findByIdAndUpdate(editid, {
+                categoryId: category,
+                subcategoryId: subcategory,
+                exsubcategoryId: exsubcategory,
+                product: product,
+                qty: qty,
+                price: price,
+                image: req.file?.path
+
+            })
+            console.log('update product user')
+            return res.redirect('/product/viewproduct')
+
+        } else {
+            await ProductModel.findByIdAndUpdate(editid, {
+                categoryId: category,
+                subcategoryId: subcategory,
+                exsubcategoryId: exsubcategory,
+                product: product,
+                qty: qty,
+                price: price,
+                image: ff?.image,
+
+            })
+            console.log('update product user')
+            return res.redirect('/product/viewproduct')
+        }
+
 
     } catch (err) {
         console.log(err);

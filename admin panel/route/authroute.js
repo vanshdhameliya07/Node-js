@@ -11,7 +11,7 @@ const passport = require('passport');
 route.get('/register', registerpage);
 route.get('/', loginpage);
 route.get('/about', passport.checkUser, aboutpage);
-route.get('/dashboard', dashboardpage);
+route.get('/dashboard', passport.checkUser, dashboardpage);
 route.get('/logout', logOut);
 route.get('/otp', Otppage);
 route.get('/forgot', forgotpage);

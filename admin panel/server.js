@@ -1,4 +1,5 @@
 const express = require(`express`);
+const path = require('path');
 
 const port = 9500;
 
@@ -6,20 +7,21 @@ const app = express();
 
 const db = require(`./config/db`);
 
-const path = require('path');
 
 app.use('/upload', express.static(path.join(__dirname, 'upload')));
-app.use(express.static(path.join(__dirname, 'public')))
-
 
 app.use(express.urlencoded());
 
 app.set(`view engine`, `ejs`);
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 const cookieparser = require('cookie-parser');
-app.use(cookieparser())
+
+app.use(cookieparser());
 
 // login system start
+
 const passport = require(`passport`);//1
 const passportLocal = require(`./config/passportlocal`);//2
 const session = require(`express-session`)//3
@@ -40,8 +42,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setuser)
 // login system end
-
-
 
 //flash message start
 const flash = require('connect-flash');

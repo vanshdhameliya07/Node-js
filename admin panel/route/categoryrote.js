@@ -8,8 +8,8 @@ const passport = require('passport');
 
 
 // get method 
-route.get('/addcategory', addcategorypage);
-route.get('/viewcategory', viewcategorypage);
+route.get('/addcategory', passport.checkUser, addcategorypage);
+route.get('/viewcategory', passport.checkUser, viewcategorypage);
 route.get('/changestatus', Changestatus);
 route.get('/deleteuser', deleteUser);
 route.get('/edituser', editUser);
