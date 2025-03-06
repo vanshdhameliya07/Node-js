@@ -11,7 +11,8 @@ passport.use(new passportLocal({
 }, async (email, password, done) => {
     try {
         const user = await UserModel.findOne({ email: email });
-        console.log(user)
+
+
         if (!user || user.password != password) {
             console.log(`Email and password not valid`);
             return done(null, false);
@@ -26,7 +27,8 @@ passport.use(new passportLocal({
 }));
 
 passport.serializeUser((user, done) => {
-    return done(null, user.id)
+    return done(null, user.id);
+
 })
 
 passport.deserializeUser(async (id, done) => {

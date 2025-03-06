@@ -18,7 +18,7 @@ const addsubcategorypage = async (req, res) => {
 }
 const viewsubcategorypage = async (req, res) => {
     try {
-        let category = await SubcategoryModel.find({ status: "active" }).populate('categoryId');
+        let category = await SubcategoryModel.find({}).populate('categoryId');
         return res.render('subcategory/view_sub_category', {
             category: category
         })
@@ -101,7 +101,9 @@ const logOut = (req, res) => {
 }
 const Changestatus = async (req, res) => {
     let id = req.query.id;
+    console.log(id)
     let status = req.query.status;
+    console.log(status)
 
     if (status == "deactive") {
         await SubcategoryModel.findByIdAndUpdate(id, {

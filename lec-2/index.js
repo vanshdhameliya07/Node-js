@@ -4,7 +4,7 @@ const port = 8000;
 
 const fs = require(`fs`);
 
-const {error} = require("console");
+const { error } = require("console");
 
 
 const server = ht.createServer((req, res) => {

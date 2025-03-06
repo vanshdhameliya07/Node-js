@@ -4,7 +4,10 @@ const registerpage = (req, res) => {
     return res.render(`register`);
 }
 const loginpage = (req, res) => {
+    if (res?.locals?.users) {
+        return res.redirect(`/dashboard`);
 
+    }
     return res.render(`login`);
 }
 const dashboardpage = (req, res) => {
@@ -35,7 +38,6 @@ const registerUser = async (req, res) => {
 const loginUser = (req, res) => {
     try {
         console.log("done");
-
         return res.redirect(`/dashboard`);
 
     } catch (error) {
@@ -44,6 +46,17 @@ const loginUser = (req, res) => {
     }
 }
 
+const logOut = (req, res) => {
+    req.logout((err) => {
+        if (err) {
+            console.log(err);
+            return false;
+        }
+    })
+    console.log('log out user')
+    return res.redirect('/');
+}
+
 module.exports = {
-    registerpage, loginpage, registerUser, loginUser, aboutpage, dashboardpage
+    registerpage, loginpage, registerUser, loginUser, aboutpage, dashboardpage, logOut
 }
