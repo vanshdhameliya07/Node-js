@@ -380,7 +380,8 @@
 
                                     <div class="col-sm-6 col-md-10">
                                         <label class="col-sm-6 col-md-2 col-form-label">SubCategory</label>
-                                        <select name="subcategory" id="subcategory" class="form-control">
+                                        <select name="subcategory" id="subcategory" class="form-control"
+                                            onchange="subcategoryRecord()">
                                             <option>---select subcategory---</option>
                                         </select>
 
@@ -526,33 +527,34 @@
     }
     editSubcategory();
 
-    const Exubcategory = () => {
 
-        let subcateid = `<%= single?.subcategoryId?.id %>`;
-        let exsubcateid = `<%= single?.exsubcategoryId?.id %>`;
-
+    const subcategoryRecord = () => {
+        let subcategoryid = document.getElementById('subcategory').value;
 
         $.ajax({
-            method: 'GET',
-            url: `/product/ajaxcategorywiserecord?subcategoryId=${subcateid}`,
+            type: 'GET',
+            url: `/product/ajaxcategorywiserecord?subcategoryId=${subcategoryid}`,
             success: function (res) {
                 console.log(res)
-                let subcategory = res.subcategory;
-                let exsubcategory = res.exsubcategory;
 
-                let tbl = "";
-                tbl += `<option>---select exsubcategory---</option>`
-                exsubcategory.map((val) => {
-                    tbl += `
-                 <option ${val?._id == subcateid ? 'selected' : ''} value=${val?._id}>${val?.exsubcategory}</option>
-        `
-                })
-                document.getElementById('exsubcategory').innerHTML = tbl
+                if (res.success) {
+
+                    let exsubcategory = res.exsubcategory;
+                    let tbl = "";
+                    tbl += `<option value="">---select exsubcategory---</option>`
+                    exsubcategory.map((val) => {
+                        tbl += `<option value='${val?._id}'>${val?.exsubcategory}</option>`
+                    })
+                    document.getElementById('exsubcategory').innerHTML = tbl
+                }
+
             }
         })
 
     }
-    Exubcategory();
+
+
+
 
 </script>
 

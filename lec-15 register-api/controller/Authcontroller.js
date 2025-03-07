@@ -15,6 +15,7 @@ const registeruser = async (req, res) => {
             name: name,
             email: email,
             password: password
+            
         })
 
 
