@@ -15,7 +15,7 @@ const verifyToken = (req, res, next) => {
             if (err) {
                 return res.status(400).send({
                     success: false,
-                    message: "Token is no   t valid",
+                    message: "Token is not valid",
 
                 })
             }
@@ -40,7 +40,6 @@ const authorise = (roles) => {
             });
 
         }
-
         return next();
     };
 

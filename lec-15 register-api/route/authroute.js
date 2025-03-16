@@ -7,6 +7,6 @@ const { verifyToken, authorise } = require('../midleware/Auth');
 
 route.post('/register', registeruser);
 route.post('/login', loginUser);
-route.get('/alluser', verifyToken, authorise(["admin"]), alluser);
+route.get('/alluser', verifyToken, authorise(["admin", "user"]), alluser);
 
 module.exports = route

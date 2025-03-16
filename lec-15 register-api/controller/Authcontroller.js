@@ -15,7 +15,7 @@ const registeruser = async (req, res) => {
             name: name,
             email: email,
             password: password
-            
+
         })
 
 
@@ -47,6 +47,7 @@ const loginUser = async (req, res) => {
     }
 
     const token = await JWT.sign({ payload: user }, 'jee', { expiresIn: '3hr' });
+
     return res.status(200).send({
         success: true,
         message: "Login successfully",
