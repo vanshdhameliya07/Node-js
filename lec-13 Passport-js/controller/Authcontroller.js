@@ -40,7 +40,7 @@ const loginUser = (req, res) => {
         console.log("done");
         return res.redirect(`/dashboard`);
 
-    } catch (error) {
+    } catch (err) {
         console.log(err);
         return false;
     }

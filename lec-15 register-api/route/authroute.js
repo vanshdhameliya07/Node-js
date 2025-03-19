@@ -9,4 +9,4 @@ route.post('/register', registeruser);
 route.post('/login', loginUser);
 route.get('/alluser', verifyToken, authorise(["admin", "user"]), alluser);
 
-module.exports = route
+module.exports = route;

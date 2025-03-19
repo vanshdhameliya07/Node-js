@@ -11,6 +11,7 @@ const verifyToken = (req, res, next) => {
         }
 
         let newToken = token.slice(7);
+
         JWT.verify(newToken, 'jee', (err, decode) => {
             if (err) {
                 return res.status(400).send({
@@ -21,6 +22,7 @@ const verifyToken = (req, res, next) => {
             }
             req.user = decode.payload;
             return next();
+
         })
 
 
@@ -42,7 +44,6 @@ const authorise = (roles) => {
         }
         return next();
     };
-
 }
 module.exports = {
     verifyToken, authorise

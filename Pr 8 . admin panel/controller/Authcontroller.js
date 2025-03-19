@@ -1,4 +1,5 @@
 const UserModel = require(`../models/UserModel`);
+
 var nodemailer = require('nodemailer');
 
 
@@ -140,7 +141,7 @@ const usernewPassword = async (req, res) => {
                 password: newpass
             })
             res.clearCookie('user')
-            return res.redirect('/')
+            return res.redirect('/');
         }
         else {
             console.log('newpassword and conform password is not match');

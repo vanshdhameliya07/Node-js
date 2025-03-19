@@ -7,7 +7,6 @@ const app = express();
 
 const db = require(`./config/db`);
 
-
 app.use('/upload', express.static(path.join(__dirname, 'upload')));
 
 app.use(express.urlencoded());

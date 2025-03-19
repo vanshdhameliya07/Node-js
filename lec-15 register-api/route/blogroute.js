@@ -2,7 +2,8 @@ const express = require('express');
 
 const route = express.Router();
 
-const { createblog, viewblog } = require('../controller/Blogcontroller');
+const { createblog, viewblog, deleteBlog } = require('../controller/Blogcontroller');
+
 const { verifyToken, authorise } = require('../midleware/Auth');
 
 const multer = require('multer');
@@ -16,8 +17,13 @@ const st = multer.diskStorage({
         cb(null, `${file.fieldname}-${uniq}`)
     }
 })
-const imageupload = multer({ storage: st }).single('image')
 
-route.post('/addblog', verifyToken, authorise(["admin", "user"]), imageupload, createblog)
-route.get('/viewblog', viewblog)
+const imageupload = multer({ storage: st }).single('image');
+
+route.post('/addblog', verifyToken, authorise(["admin"]), imageupload, createblog)
+
+route.get('/viewblog', verifyToken, authorise(["admin"]), viewblog);
+
+route.delete('/deleteblog', deleteBlog)
+
 module.exports = route

@@ -10,7 +10,7 @@ passport.use(new passportLocal({
 }, async (email, password, done) => {
     try {
         const user = await UserModel.findOne({ email: email });
-      
+
         if (!user || user.password != password) {
             console.log(`Email and password not valid`);
             return done(null, false);

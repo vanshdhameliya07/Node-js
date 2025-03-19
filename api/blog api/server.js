@@ -1,10 +1,14 @@
 const express = require('express');
 
-const port = 9000;
+const port = 8000;
 
 const app = express();
 
+app.use(express.urlencoded())
 
+const db = require('./config/db')
+
+app.use('/', require('./route/indexroute'));
 
 app.listen(port, (err) => {
     if (err) {

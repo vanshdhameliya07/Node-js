@@ -1,4 +1,5 @@
 const UserModel = require('../model/UserModel');
+
 const JWT = require(`jsonwebtoken`)
 
 const registeruser = async (req, res) => {
@@ -15,14 +16,14 @@ const registeruser = async (req, res) => {
             name: name,
             email: email,
             password: password
-
         })
 
 
     } catch (err) {
         return res.status(501).send({
             success: false,
-            error: err
+            message: err
+
         })
     }
 }
@@ -67,7 +68,7 @@ const alluser = async (req, res) => {
     } catch (err) {
         return res.status(501).send({
             success: false,
-            error: err
+            message: err
         })
     }
 }
