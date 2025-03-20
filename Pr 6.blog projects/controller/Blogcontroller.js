@@ -73,7 +73,7 @@ const UpdateRecord = async (req, res) => {
                 image: req?.file?.path
             })
             console.log(`user update`);
-            return res.redirect(`/blog/viewblog`)
+            return res.redirect(`/blog/viewblog`);
         }
         else {
             await BlogModel.findByIdAndUpdate(editid, {

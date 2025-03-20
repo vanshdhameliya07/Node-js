@@ -2,7 +2,7 @@ const express = require('express');
 
 const route = express.Router();
 
-const { createblog, viewblog, deleteBlog } = require('../controller/Blogcontroller');
+const { createblog, viewblog, deleteBlog, updateBlog } = require('../controller/Blogcontroller');
 
 const { verifyToken, authorise } = require('../midleware/Auth');
 
@@ -24,6 +24,8 @@ route.post('/addblog', verifyToken, authorise(["admin"]), imageupload, createblo
 
 route.get('/viewblog', verifyToken, authorise(["admin"]), viewblog);
 
-route.delete('/deleteblog', deleteBlog)
+route.delete('/deleteblog', deleteBlog);
+
+route.put('/updateblog', verifyToken, imageupload, updateBlog)
 
 module.exports = route

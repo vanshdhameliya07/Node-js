@@ -6,6 +6,8 @@ const app = express();
 
 const db = require('./config/db');
 
+
+
 app.use(express.urlencoded());
 
 app.use('/', require('./route/indexroute'));

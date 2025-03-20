@@ -1,6 +1,8 @@
+const { log } = require('console');
 const BlogModel = require('../model/BlogModel');
 
 const fs = require('fs');
+const { title } = require('process');
 
 
 const createblog = async (req, res) => {
@@ -67,7 +69,58 @@ const deleteBlog = async (req, res) => {
 
 }
 
+const updateBlog = async (req, res) => {
+    try {
+        const { id, title, content } = req.body
+
+        let ff = await BlogModel.findById(id);
+        if (req.file) {
+            try {
+                fs.unlinkSync(ff?.image)
+            } catch (err) {
+                return res.status(401).send({
+                    success: false,
+                    message: err
+                })
+            }
+            const update = await BlogModel.findByIdAndUpdate(id, {
+                title: title,
+                content: content,
+                image: req?.file?.path
+            })
+            return res.status(200).send({
+                success: true,
+                message: 'blog  successfully update',
+                update
+            })
+        }
+        else {
+            const update = await BlogModel.findByIdAndUpdate(id, {
+                userId: req.user?._id,
+                title: title,
+                content: content,
+                image: ff?.image
+            })
+            return res.status(200).send({
+                success: true,
+                message: 'blog  successfully update',
+                
+            })
+
+        }
+
+
+
+    } catch (err) {
+        return res.status(401).send({
+            success: false,
+            message: err
+        })
+    }
+
+}
+
 
 module.exports = {
-    createblog, viewblog, deleteBlog
+    createblog, viewblog, deleteBlog, updateBlog
 }
