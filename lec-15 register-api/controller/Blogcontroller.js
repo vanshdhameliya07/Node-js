@@ -1,15 +1,14 @@
-const { log } = require('console');
 const BlogModel = require('../model/BlogModel');
 
 const fs = require('fs');
-const { title } = require('process');
-
 
 const createblog = async (req, res) => {
     try {
+
         const { title, content } = req.body;
 
         const blog = await BlogModel.create({
+
             userId: req.user._id,
             title: title,
             content: content,
@@ -30,7 +29,7 @@ const createblog = async (req, res) => {
 }
 const viewblog = async (req, res) => {
     try {
-        const user = req.user;
+
         const blogs = await BlogModel.find({ userId: req.user?._id }).populate('userId');
         return res.status(200).send({
             success: true,
@@ -104,6 +103,7 @@ const updateBlog = async (req, res) => {
             return res.status(200).send({
                 success: true,
                 message: 'blog  successfully update',
+                update
                 
             })
 
