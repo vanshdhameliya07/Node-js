@@ -6,11 +6,10 @@ const { registerpage, loginpage, registerUser, loginUser, dashboardpage } = requ
 const passport = require('passport');
 
 route.get('/', loginpage)
-route.get('/register', registerpage)
-route.get('/dashboard', passport.checkuser, dashboardpage)
+route.get('/register', registerpage);
+route.get('/dashboard', dashboardpage)
 
-route.post('/registerdata', registerUser)
-route.post('/loginuser', passport.authenticate('local', { failureRedirect: `/` }), loginUser)
-
+route.post('/registeruser', registerUser)
+route.post('/loginuser', passport.authenticate('local', { failureRedirect: '/' }), loginUser)
 
 module.exports = route

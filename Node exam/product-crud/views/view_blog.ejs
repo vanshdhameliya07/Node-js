@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Blog</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            flex-direction: column;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 80%;
+            max-width: 900px;
+            overflow-x: auto;
+        }
+        h1 {
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background: #ff7e5f;
+            color: white;
+        }
+        img {
+            width: 80px;
+            border-radius: 5px;
+        }
+        a.button {
+            display: inline-block;
+            padding: 10px 15px;
+            margin: 10px;
+            background: #ff7e5f;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        a.button:hover {
+            background: #e76b51;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>View Product Blog</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Description</th>
+                    <th>Image</th>
+                    <th>Delete</th>
+                    <th>Edit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% product.map((val,i)=>{%>
+                    <tr>
+                        <td><%=val.name%></td>
+                        <td><%=val.price%></td>
+                        <td><%=val.qty%></td>
+                        <td><%=val.description%></td>
+                        <td><img src="<%=val.image%>" alt="Product Image"></td>
+                        <td><a class="button" href="/deleteuser?did=<%=val.id%>">Delete</a></td>
+                        <td><a class="button" href="/edituser?eid=<%=val.id%>">Edit</a></td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+        <a class="button" href="/addblog">Add Blog</a>
+    </div>
+</body>
+</html>

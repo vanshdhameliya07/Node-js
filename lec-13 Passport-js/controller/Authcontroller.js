@@ -53,7 +53,7 @@ const logOut = (req, res) => {
             return false;
         }
     })
-    console.log('log out user')
+    console.log('log out user');
     return res.redirect('/');
 }
 
