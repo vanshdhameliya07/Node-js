@@ -4,7 +4,7 @@ const multer = require('multer');
 
 const route = express.Router();
 
-const { addblogpage, insertuserblog, viewblogpage, deleteuser, editid, Updaterecord } = require('../controller/Authcontroller');
+const { addblogpage, insertuserblog, viewblogpage, deleteuser, editid, Updaterecord } = require('../controller/Productcontroller');
 
 
 route.get('/addblog', addblogpage);

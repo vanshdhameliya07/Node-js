@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,6 +15,7 @@
             height: 100vh;
             margin: 0;
         }
+
         .container {
             background: white;
             padding: 20px;
@@ -22,16 +24,20 @@
             text-align: center;
             width: 350px;
         }
+
         h1 {
             color: #333;
         }
-        input[type="text"], input[type="file"] {
+
+        input[type="text"],
+        input[type="file"] {
             width: 90%;
             padding: 10px;
             margin: 8px 0;
             border: 1px solid #ccc;
             border-radius: 5px;
         }
+
         input[type="submit"] {
             width: 100%;
             padding: 10px;
@@ -43,9 +49,11 @@
             cursor: pointer;
             transition: background 0.3s;
         }
+
         input[type="submit"]:hover {
             background: #e76b51;
         }
+
         .link {
             display: block;
             margin-top: 15px;
@@ -53,15 +61,17 @@
             color: #ff7e5f;
             font-weight: bold;
         }
+
         .link:hover {
             text-decoration: underline;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>Add Blog</h1>
-        <form action="/insertuserblog" method="post" enctype="multipart/form-data">
+        <form action="/product/insertuserblog" method="post" enctype="multipart/form-data">
             <input type="text" name="name" placeholder="Enter Name" required>
             <input type="text" name="price" placeholder="Enter Price" required>
             <input type="text" name="qty" placeholder="Enter Quantity" required>
@@ -69,7 +79,8 @@
             <input type="file" name="image" required>
             <input type="submit" value="Submit">
         </form>
-        <a class="link" href="/viewblog">View Blogs</a>
+        <a class="link" href="/product/viewblog">View Blogs</a>
     </div>
 </body>
+
 </html>

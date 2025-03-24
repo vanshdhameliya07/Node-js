@@ -83,14 +83,14 @@
                         <td><%=val.price%></td>
                         <td><%=val.qty%></td>
                         <td><%=val.description%></td>
-                        <td><img src="<%=val.image%>" alt="Product Image"></td>
-                        <td><a class="button" href="/deleteuser?did=<%=val.id%>">Delete</a></td>
-                        <td><a class="button" href="/edituser?eid=<%=val.id%>">Edit</a></td>
+                        <td><img src="/<%=val.image%>" alt="Product Image"></td>
+                        <td><a class="button" href="/product/deleteuser?did=<%=val.id%>">Delete</a></td>
+                        <td><a class="button" href="/product/edituser?eid=<%=val.id%>">Edit</a></td>
                     </tr>
                 <% }) %>
             </tbody>
         </table>
-        <a class="button" href="/addblog">Add Blog</a>
+        <a class="button" href="/product/addblog">Add Blog</a>
     </div>
 </body>
 </html>

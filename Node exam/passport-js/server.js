@@ -2,11 +2,15 @@ const express = require('express');
 
 const port = 8300;
 
-const app = express();
+const app = express()
 
 const db = require('./config/db');
 
 app.set('view engine', 'ejs');
+
+const path = require('path');
+
+app.use('/upload', express.static(path.join(__dirname, 'upload')))
 
 app.use(express.urlencoded())
 

@@ -1,4 +1,4 @@
-const UserModel = require('../models/UserModel');
+const ProductModel = require('../models/ProductModel');
 const fs = require('fs')
 
 const addblogpage = (req, res) => {
@@ -8,14 +8,14 @@ const addblogpage = (req, res) => {
 const insertuserblog = async (req, res) => {
     try {
         const { name, price, qty, description } = req.body;
-        await UserModel.create({
+        await ProductModel.create({
             name: name,
             price: price,
             qty: qty,
             description: description,
             image: req.file.path
         })
-        return res.redirect('/addblog')
+        return res.redirect('/product/addblog')
     } catch (err) {
         console.log(err);
         return false
@@ -23,7 +23,7 @@ const insertuserblog = async (req, res) => {
 }
 const viewblogpage = async (req, res) => {
     try {
-        const single = await UserModel.find({});
+        const single = await ProductModel.find({});
         return res.render('view_blog', {
             product: single
         })
@@ -36,12 +36,12 @@ const viewblogpage = async (req, res) => {
 const deleteuser = async (req, res) => {
     let id = req.query.did;
     try {
-        const ff = await UserModel.findById(id);
+        const ff = await ProductModel.findById(id);
         fs.unlinkSync(ff.image)
 
-        await UserModel.findByIdAndDelete(id)
+        await ProductModel.findByIdAndDelete(id)
         console.log("record delete");
-        return res.redirect('/viewblog');
+        return res.redirect('/product/viewblog');
     } catch (err) {
         console.log(err)
         return false;
@@ -51,7 +51,7 @@ const editid = async (req, res) => {
     let id = req.query.eid;
 
     try {
-        let single = await UserModel.findById(id)
+        let single = await ProductModel.findById(id)
         console.log('edit user')
         return res.render('edit_blog', {
             record: single
@@ -65,7 +65,7 @@ const Updaterecord = async (req, res) => {
     const { editid, name, price, qty, description } = req.body;
 
     try {
-        let ff = await UserModel.findById(editid);
+        let ff = await ProductModel.findById(editid);
         if (req.file) {
             try {
                 fs.unlinkSync(ff?.image);
@@ -74,18 +74,18 @@ const Updaterecord = async (req, res) => {
                 console.log(err);
                 return false;
             }
-            await UserModel.findByIdAndUpdate(editid, {
+            await ProductModel.findByIdAndUpdate(editid, {
                 name: name,
                 price: price,
                 qty: qty,
                 description: description,
                 image: req?.file?.path,
             })
-            return res.redirect('/viewblog');
+            return res.redirect('/product/viewblog');
 
         }
         else {
-            await UserModel.findByIdAndUpdate(editid, {
+            await ProductModel.findByIdAndUpdate(editid, {
                 name: name,
                 price: price,
                 qty: qty,
@@ -93,7 +93,7 @@ const Updaterecord = async (req, res) => {
                 image: ff?.image,
             })
             console.log('User updated successfully');
-            return res.redirect('/viewblog');
+            return res.redirect('/product/viewblog');
         }
     } catch (err) {
         console.error(err);
