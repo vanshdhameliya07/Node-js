@@ -4,6 +4,9 @@ const fs = require('fs')
 const addblogpage = (req, res) => {
     return res.render('add_blog')
 }
+const editcartpage = (req, res) => {
+    return res.render('editcart')
+}
 
 const insertuserblog = async (req, res) => {
     try {
@@ -100,6 +103,48 @@ const Updaterecord = async (req, res) => {
         return false;
     }
 }
+const Cartproduct = async (req, res) => {
+    const id = req.query.cid;
+    try {
+
+        const cart = await ProductModel.find({})
+        console.log('cart successfully add');
+        return res.render('viewcart', {
+            cart
+        })
+
+    } catch (err) {
+        console.log(err)
+        return false
+    }
+}
+const Cartremove = async (req, res) => {
+    const id = req.query.rid;
+    try {
+        const ff = await ProductModel.findById(id);
+        fs.unlinkSync(ff.image)
+
+        await ProductModel.findByIdAndDelete(id)
+        console.log("record delete");
+        return res.redirect('/product/viewblog');
+    } catch (err) {
+        console.log(err)
+        return false
+    }
+}
+const editId = async (req, res) => {
+    const id = req.query?.uid;
+    try {
+        const cart = await ProductModel.findById(id);
+        return res.render('editcart', {
+            record: cart
+        })
+
+    } catch (err) {
+        console.log(err)
+        return false
+    }
+}
 module.exports = {
-    addblogpage, insertuserblog, viewblogpage, deleteuser, editid, Updaterecord
+    addblogpage, insertuserblog, viewblogpage, deleteuser, editid, Updaterecord, Cartproduct, Cartremove, editId, editcartpage
 }

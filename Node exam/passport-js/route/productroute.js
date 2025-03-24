@@ -4,13 +4,18 @@ const multer = require('multer');
 
 const route = express.Router();
 
-const { addblogpage, insertuserblog, viewblogpage, deleteuser, editid, Updaterecord } = require('../controller/Productcontroller');
+const { addblogpage, insertuserblog, viewblogpage, deleteuser, editid, Updaterecord, Cartproduct, Cartremove, editId, editcartpage } = require('../controller/Productcontroller');
 
 
 route.get('/addblog', addblogpage);
 route.get('/viewblog', viewblogpage);
 route.get('/deleteuser', deleteuser);
 route.get('/edituser', editid);
+route.get('/cartuser', Cartproduct);
+route.get('/cartremove', Cartremove);
+route.get('/cartupdate', editId);
+route.get('/editcart', editcartpage);
+
 
 const sto = multer.diskStorage({
     destination: (req, res, cb) => {
