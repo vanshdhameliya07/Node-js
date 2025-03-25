@@ -16,8 +16,6 @@ const viewblogpage = async (req, res) => {
         return res.render('viewblog', {
             record: allrecord
         })
-   
-
 }
 
 const aboutpage = (req, res) => {

@@ -104,7 +104,7 @@ const Updaterecord = async (req, res) => {
     }
 }
 const Cartproduct = async (req, res) => {
-    const id = req.query.cid;
+    const id = req.query.acid;
     try {
 
         const cart = await ProductModel.find({})

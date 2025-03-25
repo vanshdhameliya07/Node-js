@@ -4,6 +4,7 @@ const registerpage = (req, res) => {
     return res.render('register')
 }
 const loginpage = (req, res) => {
+
     return res.render('login')
 }
 const dashboardpage = (req, res) => {
@@ -37,6 +38,23 @@ const loginUser = (req, res) => {
     }
 }
 
+const Logout = (req, res) => {
+    try {
+        req.logout((err) => {
+            if (err) {
+                console.log(err);
+                return false
+            }
+        })
+        console.log(`logout user`)
+        return res.redirect('/')
+
+    } catch (err) {
+        console.log(err);
+        return false;
+    }
+}
+
 module.exports = {
-    registerpage, loginpage, registerUser, loginUser, dashboardpage
+    registerpage, loginpage, registerUser, loginUser, dashboardpage, Logout
 }

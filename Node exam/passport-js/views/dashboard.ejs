@@ -4,22 +4,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dashboard</title>
+    <title>Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
+<body class="bg-gray-100 min-h-screen">
+    <!-- Header -->
+    <header class="bg-blue-600 text-white p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold">My Website</h1>
+            <nav>
+                <a href="#" class="mx-2 hover:underline">Home</a>
+                <a href="#" class="mx-2 hover:underline">About</a>
+                <a href="#" class="mx-2 hover:underline">Contact</a>
+                <a href="/product/addblog" class="mx-2 hover:underline">Add
+                    Blog</a>
+                <a href="/logout" class="mx-2 hover:underline">Log out</a>
+            </nav>
+        </div>
+    </header>
 
-    <h1>welcome dashboard page</h1>
+    <!-- Main Content -->
+    <main class="flex items-center justify-center p-6">
+        <div class="bg-white shadow-lg rounded-lg p-6 w-96 text-center">
+            <h2 class="text-2xl font-bold text-gray-700 mb-4">Welcome to the Dashboard</h2>
 
-    <h2>name : <%= locals.users?.name %>
-    </h2>
-    <h2>email : <%= locals.users?.email %>
-    </h2>
-    <h2>password : <%= locals.users?.password %>
-    </h2>
+            <div class="text-left mb-4">
+                <h3 class="text-lg font-semibold text-gray-600">Name: <span class="text-gray-800">
+                        <%= locals.users?.name %>
+                    </span></h3>
+                <h3 class="text-lg font-semibold text-gray-600">Email: <span class="text-gray-800">
+                        <%= locals.users?.email %>
+                    </span></h3>
+                <h3 class="text-lg font-semibold text-gray-600">Password: <span class="text-gray-800">
+                        <%= locals.users?.password %>
+                    </span></h3>
+            </div>
 
-    <a href="/product/addblog">addblog</a>
-
+            <a href="/product/addblog" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">Add
+                Blog</a>
+        </div>
+    </main>
 </body>
 
 </html>
