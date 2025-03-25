@@ -6,32 +6,95 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>register</title>
 </head>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #6e8efb, #a777e3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .container {
+        background: white;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        width: 350px;
+    }
+
+    .container img {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 15px;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+        color: #333;
+        font-size: 24px;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        font-size: 16px;
+    }
+
+    input[type="submit"] {
+        background: #6e8efb;
+        color: white;
+        padding: 12px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        width: 100%;
+        font-size: 16px;
+        font-weight: bold;
+        transition: background 0.3s;
+    }
+
+    input[type="submit"]:hover {
+        background: #5a7de7;
+    }
+
+    a {
+        display: block;
+        margin-top: 15px;
+        text-decoration: none;
+        color: #6e8efb;
+        font-weight: bold;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+</style>
 
 <body>
-    <div align="center">
-        <h1>register page</h1>
+    <div class="container">
+        <img src="https://cdn-icons-png.flaticon.com/512/1828/1828506.png" alt="Register Icon">
 
-        <form action="/registeruser" method="post">
-            <table border="1" cellpadding="5">
-                <tr>
-                    <td>name</td>
-                    <td><input type="text" name="name"></td>
-                </tr>
-                <tr>
-                    <td>email</td>
-                    <td><input type="text" name="email"></td>
-                </tr>
-                <tr>
-                    <td>password</td>
-                    <td><input type="text" name="password"></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td><input type="submit" value="Submit"></td>
-                </tr>
-            </table>
-        </form>
-        <a href="/">login</a>
+        <div align="center">
+            <h1>register page</h1>
+
+            <form action="/registeruser" method="post">
+                <table border="1" cellpadding="5">
+                    <input type="text" name="name" placeholder="Enter your name" required>
+                    <input type="text" name="email" placeholder="Enter your email" required>
+                    <input type="password" name="password" placeholder="Enter your password" required>
+                    <input type="submit" value="Register">
+                </table>
+            </form>
+            <a href="/">login</a>
+        </div>
     </div>
 </body>
 

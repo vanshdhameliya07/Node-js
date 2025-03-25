@@ -58,6 +58,21 @@
             color: #666;
             font-size: 0.9em;
         }
+
+        .button {
+            display: inline-block;
+            padding: 8px 12px;
+            margin: 5px;
+            background: #ff7e5f;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+
+        .button:hover {
+            background: #e76b51;
+        }
     </style>
 </head>
 
@@ -75,9 +90,10 @@
                 <p><strong>Quantity:</strong>
                     <%= val.qty %>
                 </p>
-                <p>
+                <p><strong>description:</strong>
                     <%= val.description %>
                 </p>
+
                 <a class="button" href="/product/cartremove?rid=<%= val.id %>">remove cart</a>
                 <a class="button" href="/product/cartupdate?uid=<%= val.id %>">Update cart</a>
 
