@@ -539,11 +539,10 @@
 </body>
 <script type="text/javascript">
 
-   
+
     const categorychange = () => {
 
         let catid = document.getElementById('category').value;
-        console.log(catid);
         $.ajax({
             method: 'GET',
             url: `/exsubcategory/ajaxcategorywiserecord?categoryid=${catid}`,

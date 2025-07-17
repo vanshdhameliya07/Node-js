@@ -6,7 +6,6 @@ const fs = require(`fs`);
 
 const { error } = require("console");
 
-
 const server = ht.createServer((req, res) => {
     let filename = "";
     switch (req.url) {

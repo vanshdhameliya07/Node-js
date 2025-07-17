@@ -1,8 +1,6 @@
 const ht = require(`http`);
 const port = 8000;
 const fs = require(`fs`);
-const { error } = require("console");
-
 
 const server = ht.createServer((req, res) => {
 
@@ -40,7 +38,7 @@ const server = ht.createServer((req, res) => {
       case `/extra`:
          filename = `./extra.html`;
          break;
-         
+
       default:
          filename = `./404.html`;
    }
@@ -56,7 +54,7 @@ const server = ht.createServer((req, res) => {
 })
 server.listen(port, (error) => {
    if (!error) {
-      console.log(`server is running on port ${port}`);
+      console.log(`server is running on port http://localhost:${port}`);
    }
 })
 
