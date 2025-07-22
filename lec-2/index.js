@@ -36,6 +36,6 @@ const server = ht.createServer((req, res) => {
 })
 server.listen(port, (err) => {
     if (!err) {
-        console.log(`server is start on port :- ${port}`)
+        console.log(`server is start on port http://localhost:${port}`)
     }
 })

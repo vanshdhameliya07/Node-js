@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div align="center">
+        <h1>View user</h1>
+        <table border="1">
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Name</td>
+                    <td>email</td>
+                    <td>Action</td>
+                </tr>
+            </thead>
+            <tbody>
+                <% record.map((val,i)=>{
+                    %>
+
+                    <tr>
+                        <td>
+                            <%=val.id %>
+                        </td>
+                        <td>
+                            <%=val.name%>
+                        </td>
+                        <td>
+                            <%=val.email%>
+                        </td>
+                        <td>
+                            <a href="/deleteuser?deleteid=<%=val.id%>">Delete</a>
+                            <a href="/edituser?editid=<%=val.id%>">Edit</a>
+
+                        </td>
+
+                    </tr>
+
+                    <%})%>
+            </tbody>
+        </table>
+        <a href="/">add</a>
+    </div>
+</body>
+
+</html>

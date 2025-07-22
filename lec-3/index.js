@@ -13,5 +13,5 @@ app.listen(port, (err) => {
         console.log(err);
         return false;
     }
-    console.log(`port is running : localhost${port}`);
+    console.log(`port is running : http//localhost:${port}`);
 })
